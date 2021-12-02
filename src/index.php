@@ -8,7 +8,6 @@
         echo $e->getMessage();
         exit;
     }
-    
 ?>
 
 <!DOCTYPE html>
