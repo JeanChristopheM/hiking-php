@@ -1,10 +1,6 @@
 <?php
-    define('HOST', 'mysql');
-    define('USR', 'root');
-    define('PWD', 'root');
+    require_once('./php/connexion.php');
     try {
-        $db = new PDO('mysql:host='.HOST.';dbname=hiking;port=3306', USR, PWD);
-        $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         $q = $db -> prepare("SELECT * FROM hikes");
         $q->execute();
         $hikes = $q->fetchAll(PDO::FETCH_ASSOC);
@@ -12,7 +8,7 @@
         echo $e->getMessage();
         exit;
     }
-    $difficulties = ['easy', 'moderate', 'hard'];
+    
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +32,7 @@
                     <p class="duration">'.$hike['duration'].'</p>
                     <p class="elevation">'.$hike['elevation'].'</p>
                     <p class="delete"><button>DEL</button></p>
-                    <p class="modify"><button>MOD</button></p>
+                    <p class="modify"><a href=php/update.php?ID='.$hike['ID'].'>MOD</a></p>
                 </div>
                 ';
             }
