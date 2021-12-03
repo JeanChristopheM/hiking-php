@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="style/main.css">
 </head>
 <body>
-    <form method="post">
+    <form action="updateData.php" method="post">
         <ul>
             <li>
                 <label for='name'>Title : <br/></label>
@@ -65,6 +65,7 @@
                 <input type="number" name="elevation" id="elevation" value="<?php echo $hike['elevation']; ?>"><span>m</span>
             </li>
         </ul>
+        <button>Submit</button>
     </form>
 </body>
 </html>
