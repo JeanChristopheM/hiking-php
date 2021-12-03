@@ -10,6 +10,8 @@
     }
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,5 +39,18 @@
             }
         ?>
     </div>
+    <div class="create">
+        <?php
+        echo '
+        <div>
+        <p class="add"><a href="./php/create.php">ADD</a></p>
+        </div>
+        ';
+        ?>
+    </div>
+    
+    
+
+
 </body>
 </html>
