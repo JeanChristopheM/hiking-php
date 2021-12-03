@@ -7,21 +7,40 @@
         $distance = $_POST['distance'];
         
         
-        $ints=[$difficulty,$elevation, 'yo'];
+        $ints=[$difficulty,$elevation];
         $floats=[$distance];
         $strings=[$name,$duration];
 
         $error = false;
 
         foreach($ints as $int) {
-            if(!filter_var($int, FILTER_VALIDATE_INT)) {
-                echo $error;
+            if(!filter_var($int, FILTER_VALIDATE_INT) === false || filter_var($int, FILTER_VALIDATE_INT) === 0) {
+                $int = filter_var($int, FILTER_VALIDATE_INT);
+            } else {
                 $error = true;
-                echo 'error';
             }
-            echo 'normal : '.filter_var($int, FILTER_VALIDATE_INT);
-            echo '<br />';
-            echo 'anormal : '.!filter_var($int, FILTER_VALIDATE_INT);
+        }
+        foreach($floats as $float) {
+            if(!filter_var($float, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION) === false || filter_var($float, FILTER_VALIDATE_INT) === 0) {
+                $float = floatval(filter_var($float, FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION));
+            } else {
+                $error = true;
+            }
+        }
+        foreach($strings as $string) {
+            if(!filter_var($string, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_BACKTICK) === false) {
+                $float = filter_var($string, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_BACKTICK);
+            } else {
+                $error = true;
+            }
+        }
+        print_r($ints);
+        echo '<br>';
+        print_r($floats);
+        echo '<br>';
+        print_r($strings);
+        if($error) {
+            echo 'there has been an issue with some data';
         }
     }
 ?>
