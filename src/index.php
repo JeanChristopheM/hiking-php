@@ -30,7 +30,7 @@
                     <p class="distance">'.$hike['distance'].'km</p>
                     <p class="duration">'.$hike['duration'].'</p>
                     <p class="elevation">'.$hike['elevation'].'m</p>
-                    <p class="delete"><button>DEL</button></p>
+                    <p class="delete"><a href=php/delete.php?ID='.$hike['ID'].'>DEL</a></p>
                     <p class="modify"><a href=php/update.php?ID='.$hike['ID'].'>MOD</a></p>
                 </div>
                 ';

@@ -1,6 +1,6 @@
 <?php
     if (isset($_POST['name']) && isset($_POST['difficulty']) && isset($_POST['hours']) && isset($_POST['elevation']) && isset($_POST['distance'])) {
-        require_once('./connexion.php');
+        
         
         $ID = $_POST['ID'];
         $name = $_POST['name'];
@@ -85,6 +85,7 @@
 
         // IF NO ERROR, DB INJECT
         if (!$error) {
+            require_once('./connexion.php');
             $name = sanitizeString($name);
             $difficulty = sanitizeInt($difficulty);
             $elevation = sanitizeInt($elevation);
@@ -95,6 +96,7 @@
             $hours = $hours < 10 ? sprintf("%02d", $hours) : $hours;
             $minutes = $minutes < 10 ? sprintf("%02d", $minutes) : $minutes;
             $duration = $hours."H".$minutes;
+
             $query =
             'UPDATE hikes
             SET name = :name,
@@ -113,7 +115,6 @@
                 $q->bindParam(':ID', $ID, PDO::PARAM_INT);
                 
                 $q->execute();
-                $hike = $q->fetch(PDO::FETCH_ASSOC);
             } catch(Exception $e) {
                 echo $e->getMessage();
                 exit;
