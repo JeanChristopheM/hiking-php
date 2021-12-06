@@ -1,46 +1,129 @@
 <?php
-    if (isset($_POST['name']) && isset($_POST['difficulty']) && isset($_POST['duration']) && isset($_POST['elevation']) && isset($_POST['distance'])) {
+    if (isset($_POST['name']) && isset($_POST['difficulty']) && isset($_POST['hours']) && isset($_POST['elevation']) && isset($_POST['distance'])) {
+        require_once('./connexion.php');
+        
+        $ID = $_POST['ID'];
         $name = $_POST['name'];
         $difficulty = $_POST['difficulty'];
-        $duration = $_POST['duration'];
         $elevation = $_POST['elevation'];
         $distance = $_POST['distance'];
-        
-        
-        $ints=[$difficulty,$elevation];
-        $floats=[$distance];
-        $strings=[$name,$duration];
+        $hours = intval(ltrim(strval($_POST['hours']), "0"));
+        $minutes = intval(ltrim(strval($_POST['minutes']), "0"));
 
+        $errors = [];
         $error = false;
 
-        foreach($ints as $int) {
-            if(!filter_var($int, FILTER_VALIDATE_INT) === false || filter_var($int, FILTER_VALIDATE_INT) === 0) {
-                $int = filter_var($int, FILTER_VALIDATE_INT);
-            } else {
+        $data = [
+            "ints" => [
+                "difficulty" => $difficulty, 
+                "elevation" => $elevation,
+                "hours" => $hours,
+                "minutes" => $minutes,
+            ],
+            "floats" => [
+                "distance" => $distance,
+            ],
+            "strings" => [
+                "name" => $name,
+            ]
+        ];
+
+        // SANITIZATION FUNCTIONS
+
+        function sanitizeString($string) {
+            $string = filter_var(strip_tags($string), FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_BACKTICK);
+            return $string;
+        }
+        function sanitizeInt($int) {
+            $int = filter_var($int, FILTER_VALIDATE_INT);
+            return $int;
+        }
+        function sanitizeFloat($float) {
+            if (str_contains($float, ',')) {
+                $float = str_replace(',', '.', $float);
+            }
+            $float = filter_var($float, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+            return $float;
+        }
+
+        // VALIDATION
+        foreach($data as $key => $val) {
+            switch($key) {
+                case 'ints':
+                    foreach($val as $value) {
+                        if(!sanitizeInt($value) && sanitizeInt($value) !== 0) {
+                            $errors['ints'] = true;
+                        }
+                    };
+                    break;
+                case 'floats':
+                    foreach($val as $value) {
+                        if(!sanitizeFloat($value)) {
+                            $errors['floats'] = true;
+                        }
+                    };
+                    break;
+                case 'strings':
+                    foreach($val as $value) {
+                        if(!sanitizeString($value)) {
+                            $errors['strings'] = true;
+                        }
+                    };
+                    break;
+                default:
+                    echo 'Error';
+            };
+        };
+        
+        // CHECKING IF NO ERRORS
+
+        foreach($errors as $key => $value) {
+            if ($value) {
                 $error = true;
             }
         }
-        foreach($floats as $float) {
-            if(!filter_var($float, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION) === false || filter_var($float, FILTER_VALIDATE_INT) === 0) {
-                $float = floatval(filter_var($float, FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION));
-            } else {
-                $error = true;
+
+        // IF NO ERROR, DB INJECT
+        if (!$error) {
+            $name = sanitizeString($name);
+            $difficulty = sanitizeInt($difficulty);
+            $elevation = sanitizeInt($elevation);
+            $distance = sanitizeFloat($distance);
+            $hours = sanitizeInt($hours);
+            $minutes = sanitizeInt($minutes);
+            
+            $hours = $hours < 10 ? sprintf("%02d", $hours) : $hours;
+            $minutes = $minutes < 10 ? sprintf("%02d", $minutes) : $minutes;
+            $duration = $hours."H".$minutes;
+            $query =
+            'UPDATE hikes
+            SET name = :name,
+            difficulty = :difficulty,
+            distance = :distance,
+            duration = :duration,
+            elevation = :elevation
+            WHERE ID = :ID';
+            try {
+                $q = $db -> prepare($query);
+                $q->bindParam(':name', $name, PDO::PARAM_STR, 50);
+                $q->bindParam(':difficulty', $difficulty, PDO::PARAM_INT);
+                $q->bindParam(':distance', $distance, PDO::PARAM_STR, 50);
+                $q->bindParam(':duration', $duration, PDO::PARAM_STR, 50);
+                $q->bindParam(':elevation', $elevation, PDO::PARAM_INT);
+                $q->bindParam(':ID', $ID, PDO::PARAM_INT);
+                
+                $q->execute();
+                $hike = $q->fetch(PDO::FETCH_ASSOC);
+            } catch(Exception $e) {
+                echo $e->getMessage();
+                exit;
             }
-        }
-        foreach($strings as $string) {
-            if(!filter_var($string, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_BACKTICK) === false) {
-                $float = filter_var($string, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_BACKTICK);
-            } else {
-                $error = true;
+            header("Location: ../index.php");
+            exit;
+        } else {
+            foreach($errors as $key => $error) {
+                print_r("$key has $error error");
             }
-        }
-        print_r($ints);
-        echo '<br>';
-        print_r($floats);
-        echo '<br>';
-        print_r($strings);
-        if($error) {
-            echo 'there has been an issue with some data';
         }
     }
 ?>
