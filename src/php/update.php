@@ -28,7 +28,7 @@
             }
         ?>
     </title>
-    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="../style/main.css">
 </head>
 <body>
     <form action="updateData.php" method="post">

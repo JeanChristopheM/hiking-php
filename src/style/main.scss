@@ -2,53 +2,60 @@
 @import "vars";
 
 .app {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 .card {
-    display: grid;
-    max-width: 300px;
+  display: grid;
+  max-width: 300px;
+  border: 1px solid black;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, max-content);
+  grid-template-areas:
+    "name difficulty modify"
+    "distance duration delete"
+    "elevation elevation delete";
+  gap: 0.5rem;
+  padding: 0.5rem;
+  .name {
+    grid-area: name;
+  }
+  .distance {
+    grid-area: distance;
+  }
+  .difficulty {
+    grid-area: difficulty;
+  }
+  .duration {
+    grid-area: duration;
+  }
+  .elevation {
+    grid-area: elevation;
+    justify-self: center;
+  }
+  .modify {
+    grid-area: modify;
+  }
+  .delete {
+    grid-area: delete;
+  }
+  .modify,
+  .delete,
+  .difficulty,
+  .duration {
+    justify-self: right;
+  }
+  a {
+    cursor: pointer;
     border: 1px solid black;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, max-content);
-    grid-template-areas:
-        "name difficulty modify"
-        "distance duration delete"
-        "elevation elevation delete";
-    gap: 0.5rem;
-    padding: 0.5rem;
-    .name {
-        grid-area: name;
-    }
-    .distance {
-        grid-area: distance;
-    }
-    .difficulty {
-        grid-area: difficulty;
-    }
-    .duration {
-        grid-area: duration;
-    }
-    .elevation {
-        grid-area: elevation;
-        justify-self: center;
-    }
-    .modify {
-        grid-area: modify;
-    }
-    .delete {
-        grid-area: delete;
-    }
-    .modify,
-    .delete,
-    .difficulty,
-    .duration {
-        justify-self: right;
-    }
-    a {
-        cursor: pointer;
-        border: 1px solid black;
-    }
+    border-radius: 0.2rem;
+  }
+}
+button {
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 0.2rem;
+  padding: 0.5rem;
 }
 
 
