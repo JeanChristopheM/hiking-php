@@ -31,40 +31,50 @@
     <link rel="stylesheet" href="../style/main.css">
 </head>
 <body>
-    <form action="updateData.php" method="post">
+    <header class="header">
+        <h1>Update hike info</h1>
+    </header>
+    <form action="updateData.php" method="post" class="updateForm">
         <ul>
             <li>
-                <label for='name'>Title : <br/></label>
+                <label for='name' class="label">Name : <br/></label>
                 <input type="text" name="name" id="name" value="<?php echo $hike['name']; ?>">
             </li>
             <li>
-                Difficulty : <br/>
-                <label for='easy'>Easy</label>
-                <input type="radio" name="difficulty" id="easy" value="0"
-                <?php if($hike['difficulty'] == 0) echo 'checked' ?>
-                >
-                <label for='moderate'>Moderate</label>
-                <input type="radio" name="difficulty" id="moderate" value="1"
-                <?php if($hike['difficulty'] == 1) echo 'checked' ?>
-                >
-                <label for='hard'>Hard</label>
-                <input type="radio" name="difficulty" id="hard" value="2"
-                <?php if($hike['difficulty'] == 2) echo 'checked' ?>
-                >
+                <p class="label">Difficulty : </p>
+                <div>
+                    <input type="radio" name="difficulty" id="easy" value="0"
+                    <?php if($hike['difficulty'] == 0) echo 'checked' ?>
+                    >
+                    <label for='easy' class="pointer">Easy</label>
+                </div>
+                <div>
+                    <input type="radio" name="difficulty" id="moderate" value="1"
+                    <?php if($hike['difficulty'] == 1) echo 'checked' ?>
+                    >
+                    <label for='moderate' class="pointer">Moderate</label>
+                </div>
+                <div>
+                    <input type="radio" name="difficulty" id="hard" value="2"
+                    <?php if($hike['difficulty'] == 2) echo 'checked' ?>
+                    >
+                    <label for='hard' class="pointer">Hard</label>
+                </div>
             </li>
             <li>
-                <label for='distance'>Distance : <br/></label>
-                <input type="text" name="distance" id="distance" value="<?php echo $hike['distance']; ?>"><span>km</span>
+                <label for='distance' class="label">Distance : <br/></label>
+                <input type="text" name="distance" id="distance" value="<?php echo $hike['distance']; ?>"><span style="font-size:0.7em;">km</span>
             </li>
             <li>
-                <label for="duration">Duration : <br/></label>
+                <label for="duration" class="label">Duration : <br/></label>
                 <input type="number" name="hours" id="hours" value="<?php echo $timeArray($hike['duration'])[0] ?>" min="0" max="24" style="width: 3rem;">
-                <span>H</span>
+                <span style="font-size:0.7em;">hours</span>
                 <input type="number" name="minutes" id="minutes" value="<?php echo $timeArray($hike['duration'])[1] ?>" min="0" max="59" style="width: 3rem;">
+                <span style="font-size:0.7em;">minutes</span>
             </li>
             <li>
-                <label for="elevation">Elevation : <br/></label>
-                <input type="number" name="elevation" id="elevation" value="<?php echo $hike['elevation']; ?>"><span>m</span>
+                <label for="elevation" class="label">Elevation : <br/></label>
+                <input type="number" name="elevation" id="elevation" value="<?php echo $hike['elevation']; ?>"><span style="font-size:0.7em;">m</span>
             </li>
         </ul>
         <input type="hidden" name="ID" value="<?= $ID ?>" />

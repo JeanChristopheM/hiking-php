@@ -24,35 +24,39 @@
     <link rel="stylesheet" href="/style/main.css">
 </head>
 <body>
-    <div class="app">
+    <header class="header">
+        <h1>Hike-App</h1>
+        <a href="./php/create.php" class="add">add new hike</a>
+    </header>
+    <main class="app">
         <?php
             foreach ($hikes as $hike) {
                 echo '
                 <div class="card">
-                    <p class="name">'.$hike['name'].'</p>
-                    <p class="difficulty">'.$difficulties[$hike['difficulty']].'</p>
-                    <p class="distance">'.$hike['distance'].'km</p>
-                    <p class="duration">'.$hike['duration'].'</p>
-                    <p class="elevation">'.$hike['elevation'].'m</p>
-                    <p class="delete"><a href=php/delete.php?ID='.$hike['ID'].'>DEL</a></p>
-                    <p class="modify"><a href=php/update.php?ID='.$hike['ID'].'>MOD</a></p>
+                    <p class="name" style="font-weight:bold;">'.$hike['name'].'</p>
+                    <div class="difficulty">
+                        <p class="card__label">Difficulty</p>
+                        <p class="card__data">'.$difficulties[$hike['difficulty']].'</p>
+                    </div>
+                    <div class="distance">
+                        <p class="card__label">Distance</p>
+                        <p class="card__data">'.$hike['distance'].'km</p>
+                    </div>
+                    <div class="duration">
+                        <p class="card__label">Duration</p>
+                        <p class="card__data">'.$hike['duration'].'</p>
+                    </div>
+                    <div class="elevation">
+                        <p class="card__label">Elevation +</p>
+                        <p class="card__data">'.$hike['elevation'].'m</p>
+                    </div>
+                    <p class="delete"><a href=php/delete.php?ID='.$hike['ID'].'>DELETE</a></p>
+                    <p class="modify"><a href=php/update.php?ID='.$hike['ID'].'>MODIFY</a></p>
                 </div>
                 ';
             }
         ?>
-    </div>
-    <div class="create">
-        <?php
-        echo '
-        <div>
-        <p class="add"><a href="./php/create.php">ADD</a></p>
-        </div>
-        ';
-        ?>
-    </div>
-    
-    
-
+    </main>
 
 </body>
 </html>
