@@ -36,24 +36,79 @@ textarea {
   white-space: revert;
 }
 
+html {
+  font-family: sans-serif;
+  background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100%;
+}
+
+h1 {
+  font-size: 2rem;
+  display: inline-block;
+}
+
+.header {
+  padding-block: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  position: relative;
+}
+.header .add {
+  cursor: pointer;
+  color: red;
+  border: 1px solid black;
+  border-radius: 0.2rem;
+  margin-left: 2rem;
+  position: absolute;
+  right: 1rem;
+  top: 0.2rem;
+  padding: 0.2rem;
+}
+@media screen and (min-width: 768px) {
+  .header .add {
+    top: 1rem;
+    padding: 1rem;
+  }
+}
+
 .app {
   display: flex;
   flex-wrap: wrap;
+  gap: 1rem;
+  margin-inline: 1rem;
+  margin-bottom: 2rem;
 }
 
 .card {
   display: grid;
-  max-width: 300px;
+  flex: 1 1 100%;
   border: 1px solid black;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, -webkit-max-content);
   grid-template-rows: repeat(3, max-content);
-  grid-template-areas: "name difficulty modify" "distance duration delete" "elevation elevation delete";
+  grid-template-areas: "name name name" "distance duration modify" "elevation difficulty delete";
   gap: 0.5rem;
   padding: 0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 5px 5px #376a4fc1, 0px 5px 10px #376a4fc1;
+}
+@media screen and (min-width: 768px) {
+  .card {
+    flex: 1 1 calc(50% - 2rem);
+  }
+}
+@media screen and (min-width: 1200px) {
+  .card {
+    flex: 1 1 calc(33.3% - 2rem);
+  }
 }
 .card .name {
   grid-area: name;
+  justify-self: center;
+  text-decoration: underline;
 }
 .card .distance {
   grid-area: distance;
@@ -66,7 +121,6 @@ textarea {
 }
 .card .elevation {
   grid-area: elevation;
-  justify-self: center;
 }
 .card .modify {
   grid-area: modify;
@@ -84,6 +138,17 @@ textarea {
   cursor: pointer;
   border: 1px solid black;
   border-radius: 0.2rem;
+  padding: 0.2rem;
+}
+.card p {
+  line-height: 1.5;
+}
+.card__label {
+  text-decoration: underline;
+  font-size: 0.9em;
+}
+.card__data {
+  font-size: 0.8em;
 }
 
 button {
@@ -91,4 +156,39 @@ button {
   border: 1px solid black;
   border-radius: 0.2rem;
   padding: 0.5rem;
+}
+
+.updateForm {
+  border: 1px solid black;
+  margin-inline: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 5px 5px #376a4fc1, 0px 5px 10px #376a4fc1;
+}
+@media screen and (min-width: 768px) {
+  .updateForm {
+    max-width: calc(768px - 2rem);
+    margin: 0 auto;
+  }
+}
+.updateForm .label {
+  text-decoration: underline;
+}
+.updateForm .pointer {
+  cursor: pointer;
+}
+.updateForm input {
+  margin-block: 0.5rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+  border: none;
+  padding: 0.2rem;
+  box-shadow: inset 0px 0px 2px black;
+}
+.updateForm #name {
+  width: 100%;
+}
+.updateForm .distance {
+  width: 100%;
 }/*# sourceMappingURL=main.css.map */

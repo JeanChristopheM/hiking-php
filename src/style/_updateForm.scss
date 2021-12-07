@@ -1,0 +1,32 @@
+.updateForm {
+    border: 1px solid black;
+    margin-inline: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 5px 5px #376a4fc1, 0px 5px 10px #376a4fc1;
+    @media screen and (min-width: 768px) {
+        max-width: calc(768px - 2rem);
+        margin: 0 auto;
+    }
+    .label {
+        text-decoration: underline;
+    }
+    .pointer {
+        cursor: pointer;
+    }
+    input {
+        margin-block: 0.5rem;
+        font-size: 1.2rem;
+        line-height: 1.5;
+        border-radius: 0.2rem;
+        border: none;
+        padding: 0.2rem;
+        box-shadow: inset 0px 0px 2px black;
+    }
+    #name {
+        width: 100%;
+    }
+    .distance {
+        width: 100%;
+    }
+}

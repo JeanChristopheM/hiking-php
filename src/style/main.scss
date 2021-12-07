@@ -1,63 +1,116 @@
 @import "reset";
 @import "vars";
+html {
+    font-family: sans-serif;
+    background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
 
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+}
+h1 {
+    font-size: 2rem;
+    display: inline-block;
+}
+.header {
+    padding-block: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    position: relative;
+    .add {
+        cursor: pointer;
+        color: red;
+        border: 1px solid black;
+        border-radius: 0.2rem;
+        margin-left: 2rem;
+        position: absolute;
+        right: 1rem;
+        top: 0.2rem;
+        padding: 0.2rem;
+        @media screen and (min-width: 768px) {
+            top: 1rem;
+            padding: 1rem;
+        }
+    }
+}
 .app {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-inline: 1rem;
+    margin-bottom: 2rem;
 }
 .card {
-  display: grid;
-  max-width: 300px;
-  border: 1px solid black;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, max-content);
-  grid-template-areas:
-    "name difficulty modify"
-    "distance duration delete"
-    "elevation elevation delete";
-  gap: 0.5rem;
-  padding: 0.5rem;
-  .name {
-    grid-area: name;
-  }
-  .distance {
-    grid-area: distance;
-  }
-  .difficulty {
-    grid-area: difficulty;
-  }
-  .duration {
-    grid-area: duration;
-  }
-  .elevation {
-    grid-area: elevation;
-    justify-self: center;
-  }
-  .modify {
-    grid-area: modify;
-  }
-  .delete {
-    grid-area: delete;
-  }
-  .modify,
-  .delete,
-  .difficulty,
-  .duration {
-    justify-self: right;
-  }
-  a {
+    display: grid;
+    flex: 1 1 100%;
+    border: 1px solid black;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, max-content);
+    grid-template-areas:
+        "name name name"
+        "distance duration modify"
+        "elevation difficulty delete";
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 5px 5px #376a4fc1, 0px 5px 10px #376a4fc1;
+    @media screen and (min-width: 768px) {
+        flex: 1 1 calc(50% - 2rem);
+    }
+    @media screen and (min-width: 1200px) {
+        flex: 1 1 calc(33.3% - 2rem);
+    }
+    .name {
+        grid-area: name;
+        justify-self: center;
+        text-decoration: underline;
+    }
+    .distance {
+        grid-area: distance;
+    }
+    .difficulty {
+        grid-area: difficulty;
+    }
+    .duration {
+        grid-area: duration;
+    }
+    .elevation {
+        grid-area: elevation;
+    }
+    .modify {
+        grid-area: modify;
+    }
+    .delete {
+        grid-area: delete;
+    }
+    .modify,
+    .delete,
+    .difficulty,
+    .duration {
+        justify-self: right;
+    }
+    a {
+        cursor: pointer;
+        border: 1px solid black;
+        border-radius: 0.2rem;
+        padding: 0.2rem;
+    }
+    p {
+        line-height: 1.5;
+    }
+    &__label {
+        text-decoration: underline;
+        font-size: 0.9em;
+    }
+    &__data {
+        font-size: 0.8em;
+    }
+}
+button {
     cursor: pointer;
     border: 1px solid black;
     border-radius: 0.2rem;
-  }
+    padding: 0.5rem;
 }
-button {
-  cursor: pointer;
-  border: 1px solid black;
-  border-radius: 0.2rem;
-  padding: 0.5rem;
-}
-
-
-
-    
+@import "updateForm";
