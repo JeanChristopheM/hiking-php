@@ -36,86 +36,41 @@ textarea {
   white-space: revert;
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  margin: 50px auto;
-  text-align: center;
-  width: 800px;
-}
-
-h1 {
-  font-family: "Passion One";
-  font-size: 2rem;
-  text-transform: uppercase;
-}
-
-label {
-  width: 150px;
-  display: inline-block;
-  text-align: left;
-  font-size: 1.5rem;
-  font-family: "Lato";
-}
-
-input {
-  border: 2px solid #ccc;
-  font-size: 1.5rem;
-  font-weight: 100;
-  font-family: "Lato";
-  padding: 10px;
-}
-
-form {
-  margin: 25px auto;
-  padding: 20px;
-  border: 5px solid #ccc;
-  width: 500px;
-  background: #eee;
-}
-
-div.form-element {
-  margin: 20px 0;
-}
-
-button {
-  padding: 10px;
-  font-size: 1.5rem;
-  font-family: "Lato";
-  font-weight: 100;
-  background: yellowgreen;
-  color: white;
-  border: none;
-}
-
-p.success,
-p.error {
-  color: white;
-  font-family: lato;
-  background: yellowgreen;
-  display: inline-block;
-  padding: 2px 10px;
-}
-
-p.error {
-  background: orangered;
-}
-
 html {
   font-family: sans-serif;
   background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100%;
+  color: #1c1c1c;
 }
 
-h1 {
+.mainTitle {
   font-size: 2rem;
   display: inline-block;
+  font-weight: bold;
+  position: relative;
+}
+@media screen and (min-width: 768px) {
+  .mainTitle {
+    font-size: 4rem;
+    text-stroke: 4px #1c1c1c;
+    -webkit-text-stroke: 4px #1c1c1c;
+    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+}
+.mainTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 8px;
+  width: 100%;
+  background: transparent;
+  border: 2px solid #1c1c1c;
+  box-shadow: 0px 0px 5px #1c1c1c;
 }
 
 .header {
@@ -203,12 +158,6 @@ h1 {
 .card .duration {
   justify-self: right;
 }
-.card a {
-  cursor: pointer;
-  border: 1px solid black;
-  border-radius: 0.2rem;
-  padding: 0.2rem;
-}
 .card p {
   line-height: 1.5;
 }
@@ -219,12 +168,43 @@ h1 {
 .card__data {
   font-size: 0.8em;
 }
-
 button {
   cursor: pointer;
   border: 1px solid black;
   border-radius: 0.2rem;
   padding: 0.5rem;
+}
+
+.abutton {
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  position: relative;
+  display: block;
+}
+.abutton::before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  border: 4px solid #454d3e;
+  transition-duration: 0.2s;
+  transition-property: top, right, bottom, left, opacity;
+  top: -1rem;
+  left: -1rem;
+  bottom: -1rem;
+  right: -1rem;
+  opacity: 0;
+  border-radius: 0.5rem;
+}
+@media (hover: hover) {
+  .abutton:hover::before {
+    top: -4px;
+    left: -4px;
+    bottom: -4px;
+    right: -4px;
+    opacity: 1;
+  }
 }
 
 .updateForm {
@@ -260,4 +240,33 @@ button {
 }
 .updateForm .distance {
   width: 100%;
+}
+
+.modal {
+  opacity: 1;
+  position: fixed;
+  border: 1px solid black;
+  background: #376a4f;
+  padding: 1rem;
+  color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 5px 5px #376a4fc1, 0px 5px 10px #376a4fc1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal__buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.modal #modalYes,
+.modal #modalNo {
+  cursor: pointer;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
 }/*# sourceMappingURL=main.css.map */
