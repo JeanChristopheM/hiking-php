@@ -29,10 +29,10 @@
                 <div class="card">
                     <p class="name">'.$hike['name'].'</p>
                     <p class="difficulty">'.$difficulties[$hike['difficulty']].'</p>
-                    <p class="distance">'.$hike['distance'].'</p>
+                    <p class="distance">'.$hike['distance'].'km</p>
                     <p class="duration">'.$hike['duration'].'</p>
-                    <p class="elevation">'.$hike['elevation'].'</p>
-                    <p class="delete"><button>DEL</button></p>
+                    <p class="elevation">'.$hike['elevation'].'m</p>
+                    <p class="delete"><a href=php/delete.php?ID='.$hike['ID'].'>DEL</a></p>
                     <p class="modify"><a href=php/update.php?ID='.$hike['ID'].'>MOD</a></p>
                 </div>
                 ';

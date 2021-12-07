@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="style/main.css">
 </head>
 <body>
-    <form method="post">
+    <form action="updateData.php" method="post">
         <ul>
             <li>
                 <label for='name'>Title : <br/></label>
@@ -58,13 +58,17 @@
             </li>
             <li>
                 <label for="duration">Duration : <br/></label>
-                <input type="time" id="duration" name="duration" min="00:00" max="23:59" value="<?php echo str_replace(['H','h'], ':', $hike['duration'])?>">
+                <input type="number" name="hours" id="hours" value="<?php echo $timeArray($hike['duration'])[0] ?>" min="0" max="24" style="width: 3rem;">
+                <span>H</span>
+                <input type="number" name="minutes" id="minutes" value="<?php echo $timeArray($hike['duration'])[1] ?>" min="0" max="59" style="width: 3rem;">
             </li>
             <li>
                 <label for="elevation">Elevation : <br/></label>
                 <input type="number" name="elevation" id="elevation" value="<?php echo $hike['elevation']; ?>"><span>m</span>
             </li>
         </ul>
+        <input type="hidden" name="ID" value="<?= $ID ?>" />
+        <button>Submit</button>
     </form>
 </body>
 </html>
