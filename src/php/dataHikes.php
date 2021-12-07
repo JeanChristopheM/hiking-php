@@ -73,11 +73,11 @@ $elevation = $_POST["elevation"];
 $min = 0;
 $max = 2000;
 
-if (filter_var($difficulty, FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min, "max_range"=>$max))) === false) {
+if (filter_var($elevation, FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min, "max_range"=>$max))) === false) {
     echo("Number value is not within the legal range");
     $errors['elevation'] = "This elevation is invalid.";
 } else {
-    $dataElevation = filter_var($difficulty, FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min, "max_range"=>$max)));
+    $dataElevation = filter_var($elevation, FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min, "max_range"=>$max)));
 }
 
 require_once ("connexion.php");

@@ -12,7 +12,8 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 /* Remove list styles (bullets/numbers) */
@@ -36,50 +37,153 @@ textarea {
   white-space: revert;
 }
 
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 50px auto;
+  text-align: center;
+  width: 800px;
+}
+
+h1 {
+  font-family: 'Passion One';
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+label {
+  width: 150px;
+  display: inline-block;
+  text-align: left;
+  font-size: 1.5rem;
+  font-family: 'Lato';
+}
+
+input {
+  border: 2px solid #ccc;
+  font-size: 1.5rem;
+  font-weight: 100;
+  font-family: 'Lato';
+  padding: 10px;
+}
+
+form {
+  margin: 25px auto;
+  padding: 20px;
+  border: 5px solid #ccc;
+  width: 500px;
+  background: #eee;
+}
+
+div.form-element {
+  margin: 20px 0;
+}
+
+button {
+  padding: 10px;
+  font-size: 1.5rem;
+  font-family: 'Lato';
+  font-weight: 100;
+  background: yellowgreen;
+  color: white;
+  border: none;
+}
+
+p.success,
+p.error {
+  color: white;
+  font-family: lato;
+  background: yellowgreen;
+  display: inline-block;
+  padding: 2px 10px;
+}
+
+p.error {
+  background: orangered;
+}
+
 .app {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .card {
+  display: -ms-grid;
   display: grid;
   max-width: 300px;
   border: 1px solid black;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, -webkit-max-content);
-  grid-template-rows: repeat(3, max-content);
-  grid-template-areas: "name difficulty modify" "distance duration delete" "elevation elevation delete";
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  -ms-grid-rows: (max-content)[3];
+      grid-template-rows: repeat(3, -webkit-max-content);
+      grid-template-rows: repeat(3, max-content);
+      grid-template-areas: "name difficulty modify" "distance duration delete" "elevation elevation delete";
   gap: 0.5rem;
   padding: 0.5rem;
 }
+
 .card .name {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
   grid-area: name;
 }
+
 .card .distance {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
   grid-area: distance;
 }
+
 .card .difficulty {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
   grid-area: difficulty;
 }
+
 .card .duration {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
   grid-area: duration;
 }
+
 .card .elevation {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
   grid-area: elevation;
-  justify-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
 }
+
 .card .modify {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
   grid-area: modify;
 }
+
 .card .delete {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 3;
   grid-area: delete;
 }
+
 .card .modify,
 .card .delete,
 .card .difficulty,
 .card .duration {
-  justify-self: right;
+  -ms-grid-column-align: right;
+      justify-self: right;
 }
+
 .card a {
   cursor: pointer;
   border: 1px solid black;
@@ -91,4 +195,5 @@ button {
   border: 1px solid black;
   border-radius: 0.2rem;
   padding: 0.5rem;
-}/*# sourceMappingURL=main.css.map */
+}
+/*# sourceMappingURL=main.css.map */
