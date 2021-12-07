@@ -3,7 +3,7 @@
     Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
     - The "symbol *" part is to solve Firefox SVG sprite bug
 */
-*:where(:not(iframe, canvas, img, svg, video):not(svg *, symbol *)) {
+*:where(:not(iframe, canvas, img, svg, video, input):not(svg *, symbol *)) {
   all: unset;
   display: revert;
 }
@@ -12,12 +12,12 @@
 *,
 *::before,
 *::after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* Remove list styles (bullets/numbers) */
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
@@ -37,84 +37,58 @@ textarea {
 }
 
 .app {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .card {
-  display: -ms-grid;
   display: grid;
   max-width: 300px;
   border: 1px solid black;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
-  -ms-grid-rows: (max-content)[3];
-      grid-template-rows: repeat(3, -webkit-max-content);
-      grid-template-rows: repeat(3, max-content);
-      grid-template-areas: "name difficulty modify" "distance duration delete" "elevation elevation delete";
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, -webkit-max-content);
+  grid-template-rows: repeat(3, max-content);
+  grid-template-areas: "name difficulty modify" "distance duration delete" "elevation elevation delete";
   gap: 0.5rem;
   padding: 0.5rem;
 }
-
 .card .name {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
   grid-area: name;
 }
-
 .card .distance {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
   grid-area: distance;
 }
-
 .card .difficulty {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
   grid-area: difficulty;
 }
-
 .card .duration {
-  -ms-grid-row: 2;
-  -ms-grid-column: 2;
   grid-area: duration;
 }
-
 .card .elevation {
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
   grid-area: elevation;
-  -ms-grid-column-align: center;
-      justify-self: center;
+  justify-self: center;
 }
-
 .card .modify {
-  -ms-grid-row: 1;
-  -ms-grid-column: 3;
   grid-area: modify;
 }
-
 .card .delete {
-  -ms-grid-row: 2;
-  -ms-grid-row-span: 2;
-  -ms-grid-column: 3;
   grid-area: delete;
 }
-
 .card .modify,
 .card .delete,
 .card .difficulty,
 .card .duration {
-  -ms-grid-column-align: right;
-      justify-self: right;
+  justify-self: right;
 }
-
 .card a {
   cursor: pointer;
   border: 1px solid black;
+  border-radius: 0.2rem;
 }
-/*# sourceMappingURL=main.css.map */
+
+button {
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 0.2rem;
+  padding: 0.5rem;
+}/*# sourceMappingURL=main.css.map */
