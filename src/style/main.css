@@ -12,8 +12,7 @@
 *,
 *::before,
 *::after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* Remove list styles (bullets/numbers) */
@@ -37,6 +36,208 @@ textarea {
   white-space: revert;
 }
 
+.user {
+  width: 90%;
+  max-width: 340px;
+  margin: 10vh auto;
+}
+
+.user__header {
+  text-align: center;
+  opacity: 0;
+  transform: translate3d(0, 500px, 0);
+  -webkit-animation: arrive 500ms ease-in-out 0.7s forwards;
+          animation: arrive 500ms ease-in-out 0.7s forwards;
+}
+
+.user__title {
+  font-size: 14px;
+  margin-bottom: -10px;
+  font-weight: 500;
+  font-size: 30px;
+  color: black;
+}
+
+.form {
+  margin-top: 40px;
+  border-radius: 6px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translate3d(0, 500px, 0);
+  -webkit-animation: arrive 500ms ease-in-out 0.9s forwards;
+          animation: arrive 500ms ease-in-out 0.9s forwards;
+}
+
+.form--no {
+  -webkit-animation: NO 1s ease-in-out;
+          animation: NO 1s ease-in-out;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.form__input {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  font-family: "Roboto";
+  -webkit-appearance: none;
+  border: 0;
+  outline: 0;
+  transition: 0.3s;
+}
+.form__input:focus {
+  background: #f7f7f7;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  font-family: "Roboto";
+  -webkit-appearance: none;
+  outline: 0;
+  border: 0;
+  color: white;
+  background: #ABA194;
+  transition: 0.3s;
+}
+.btn:hover {
+  background: #a09486;
+}
+
+@-webkit-keyframes NO {
+  from, to {
+    transform: translate3d(0, 0, 0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-10px, 0, 0);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+@keyframes NO {
+  from, to {
+    transform: translate3d(0, 0, 0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-10px, 0, 0);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translate3d(10px, 0, 0);
+  }
+}
+@-webkit-keyframes arrive {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 50px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes arrive {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 50px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.user {
+  width: 90%;
+  max-width: 340px;
+  margin: 10vh auto;
+}
+
+.user__header {
+  text-align: center;
+  opacity: 0;
+  transform: translate3d(0, 500px, 0);
+  -webkit-animation: arrive 500ms ease-in-out 0.7s forwards;
+          animation: arrive 500ms ease-in-out 0.7s forwards;
+}
+
+.user__title {
+  font-size: 14px;
+  margin-bottom: -10px;
+  font-weight: 500;
+  font-size: 30px;
+  color: black;
+}
+
+.form {
+  margin-top: 40px;
+  border-radius: 6px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translate3d(0, 500px, 0);
+  -webkit-animation: arrive 500ms ease-in-out 0.9s forwards;
+          animation: arrive 500ms ease-in-out 0.9s forwards;
+}
+
+.form--no {
+  -webkit-animation: NO 1s ease-in-out;
+          animation: NO 1s ease-in-out;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.form__input {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  font-family: "Roboto";
+  -webkit-appearance: none;
+  border: 0;
+  outline: 0;
+  transition: 0.3s;
+}
+.form__input:focus {
+  background: #f7f7f7;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  font-family: "Roboto";
+  -webkit-appearance: none;
+  outline: 0;
+  border: 0;
+  color: white;
+  background: #ABA194;
+  transition: 0.3s;
+}
+.btn:hover {
+  background: #a09486;
+}
+
+@keyframes NO {
+  from, to {
+    transform: translate3d(0, 0, 0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-10px, 0, 0);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translate3d(10px, 0, 0);
+  }
+}
+@keyframes arrive {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 50px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
 html {
   font-family: sans-serif;
   background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
@@ -76,18 +277,11 @@ html {
 
 .header {
   padding-block: 2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
+  justify-content: center;
+  align-items: baseline;
   position: relative;
 }
-
 .header .add {
   cursor: pointer;
   color: red;
@@ -99,7 +293,6 @@ html {
   top: 0.2rem;
   padding: 0.2rem;
 }
-
 @media screen and (min-width: 768px) {
   .header .add {
     top: 1rem;
@@ -108,125 +301,72 @@ html {
 }
 
 .app {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-inline: 1rem;
   margin-bottom: 2rem;
 }
 
 .card {
-  display: -ms-grid;
   display: grid;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 100%;
-          flex: 1 1 100%;
+  flex: 1 1 100%;
   border: 1px solid black;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
-  -ms-grid-rows: (max-content)[3];
-      grid-template-rows: repeat(3, -webkit-max-content);
-      grid-template-rows: repeat(3, max-content);
-      grid-template-areas: "name name name" "distance duration modify" "elevation difficulty delete";
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, -webkit-max-content);
+  grid-template-rows: repeat(3, max-content);
+  grid-template-areas: "name name name" "distance duration modify" "elevation difficulty delete";
   gap: 0.5rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  -webkit-box-shadow: 0px 5px 5px #376a4fc1, 0px 5px 10px #376a4fc1;
-          box-shadow: 0px 5px 5px #376a4fc1, 0px 5px 10px #376a4fc1;
+  box-shadow: 0px 5px 5px #376a4fc1, 0px 5px 10px #376a4fc1;
 }
-
 @media screen and (min-width: 768px) {
   .card {
-    -webkit-box-flex: 1;
-        -ms-flex: 1 1 calc(50% - 2rem);
-            flex: 1 1 calc(50% - 2rem);
+    flex: 1 1 calc(50% - 2rem);
   }
 }
-
 @media screen and (min-width: 1200px) {
   .card {
-    -webkit-box-flex: 1;
-        -ms-flex: 1 1 calc(33.3% - 2rem);
-            flex: 1 1 calc(33.3% - 2rem);
+    flex: 1 1 calc(33.3% - 2rem);
   }
 }
-
 .card .name {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
   grid-area: name;
-  -ms-grid-column-align: center;
-      justify-self: center;
+  justify-self: center;
   text-decoration: underline;
 }
-
 .card .distance {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
   grid-area: distance;
 }
-
 .card .difficulty {
-  -ms-grid-row: 3;
-  -ms-grid-column: 2;
   grid-area: difficulty;
 }
-
 .card .duration {
-  -ms-grid-row: 2;
-  -ms-grid-column: 2;
   grid-area: duration;
 }
-
 .card .elevation {
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
   grid-area: elevation;
 }
-
 .card .modify {
-  -ms-grid-row: 2;
-  -ms-grid-column: 3;
   grid-area: modify;
 }
-
 .card .delete {
-  -ms-grid-row: 3;
-  -ms-grid-column: 3;
   grid-area: delete;
 }
-
 .card .modify,
 .card .delete,
 .card .difficulty,
 .card .duration {
-  -ms-grid-column-align: right;
-      justify-self: right;
+  justify-self: right;
 }
-<<<<<<< HEAD
-
-.card a {
-  cursor: pointer;
-  border: 1px solid black;
-  border-radius: 0.2rem;
-  padding: 0.2rem;
-}
-
-=======
->>>>>>> jc
 .card p {
   line-height: 1.5;
 }
-
 .card__label {
   text-decoration: underline;
   font-size: 0.9em;
 }
-
 .card__data {
   font-size: 0.8em;
 }
@@ -274,25 +414,20 @@ button {
   margin-inline: 1rem;
   padding: 1rem;
   border-radius: 0.5rem;
-  -webkit-box-shadow: 0px 5px 5px #376a4fc1, 0px 5px 10px #376a4fc1;
-          box-shadow: 0px 5px 5px #376a4fc1, 0px 5px 10px #376a4fc1;
+  box-shadow: 0px 5px 5px #376a4fc1, 0px 5px 10px #376a4fc1;
 }
-
 @media screen and (min-width: 768px) {
   .updateForm {
     max-width: calc(768px - 2rem);
     margin: 0 auto;
   }
 }
-
 .updateForm .label {
   text-decoration: underline;
 }
-
 .updateForm .pointer {
   cursor: pointer;
 }
-
 .updateForm input {
   margin-block: 0.5rem;
   font-size: 1.2rem;
@@ -300,20 +435,14 @@ button {
   border-radius: 0.2rem;
   border: none;
   padding: 0.2rem;
-  -webkit-box-shadow: inset 0px 0px 2px black;
-          box-shadow: inset 0px 0px 2px black;
+  box-shadow: inset 0px 0px 2px black;
 }
-
 .updateForm #name {
   width: 100%;
 }
-
 .updateForm .distance {
   width: 100%;
 }
-<<<<<<< HEAD
-/*# sourceMappingURL=main.css.map */
-=======
 
 .modal {
   opacity: 1;
@@ -343,4 +472,3 @@ button {
   opacity: 0;
   pointer-events: none;
 }/*# sourceMappingURL=main.css.map */
->>>>>>> jc
