@@ -38,7 +38,6 @@ textarea {
 
 .user {
   width: 90%;
-  max-width: 340px;
   margin: 10vh auto;
 }
 
@@ -59,7 +58,8 @@ textarea {
 }
 
 .form {
-  margin-top: 40px;
+  max-width: 340px;
+  margin: 40px auto 0 auto;
   border-radius: 6px;
   overflow: hidden;
   opacity: 0;
@@ -98,7 +98,7 @@ textarea {
   outline: 0;
   border: 0;
   color: white;
-  background: #ABA194;
+  background: #aba194;
   transition: 0.3s;
 }
 .btn:hover {
@@ -136,96 +136,6 @@ textarea {
   100% {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-  }
-}
-@keyframes arrive {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 50px, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-.user {
-  width: 90%;
-  max-width: 340px;
-  margin: 10vh auto;
-}
-
-.user__header {
-  text-align: center;
-  opacity: 0;
-  transform: translate3d(0, 500px, 0);
-  -webkit-animation: arrive 500ms ease-in-out 0.7s forwards;
-          animation: arrive 500ms ease-in-out 0.7s forwards;
-}
-
-.user__title {
-  font-size: 14px;
-  margin-bottom: -10px;
-  font-weight: 500;
-  font-size: 30px;
-  color: black;
-}
-
-.form {
-  margin-top: 40px;
-  border-radius: 6px;
-  overflow: hidden;
-  opacity: 0;
-  transform: translate3d(0, 500px, 0);
-  -webkit-animation: arrive 500ms ease-in-out 0.9s forwards;
-          animation: arrive 500ms ease-in-out 0.9s forwards;
-}
-
-.form--no {
-  -webkit-animation: NO 1s ease-in-out;
-          animation: NO 1s ease-in-out;
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-}
-
-.form__input {
-  display: block;
-  width: 100%;
-  padding: 20px;
-  font-family: "Roboto";
-  -webkit-appearance: none;
-  border: 0;
-  outline: 0;
-  transition: 0.3s;
-}
-.form__input:focus {
-  background: #f7f7f7;
-}
-
-.btn {
-  display: block;
-  width: 100%;
-  padding: 20px;
-  font-family: "Roboto";
-  -webkit-appearance: none;
-  outline: 0;
-  border: 0;
-  color: white;
-  background: #ABA194;
-  transition: 0.3s;
-}
-.btn:hover {
-  background: #a09486;
-}
-
-@keyframes NO {
-  from, to {
-    transform: translate3d(0, 0, 0);
-  }
-  10%, 30%, 50%, 70%, 90% {
-    transform: translate3d(-10px, 0, 0);
-  }
-  20%, 40%, 60%, 80% {
-    transform: translate3d(10px, 0, 0);
   }
 }
 @keyframes arrive {
@@ -471,4 +381,47 @@ button {
 .hidden {
   opacity: 0;
   pointer-events: none;
+}
+
+.message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-animation: 1s ease-in-out 2s 1 normal forwards fadeAway;
+          animation: 1s ease-in-out 2s 1 normal forwards fadeAway;
+  border: 1px solid black;
+  background: #c8dcd2;
+  font-size: 3rem;
+  text-align: center;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.message.green {
+  color: green;
+}
+.message.red {
+  color: red;
+}
+
+@-webkit-keyframes fadeAway {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+  }
+}
+
+@keyframes fadeAway {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+  }
 }/*# sourceMappingURL=main.css.map */

@@ -5,11 +5,14 @@
         try {
             $q = $db -> prepare("DELETE FROM hikes WHERE ID = $ID");
             $q->execute();
-            $hike = $q->fetch(PDO::FETCH_ASSOC);
+            $count = $q->rowCount();
+            if ($count > 0) {
+                header("Location: ../index.php?message=deleteSuccess");
+            } else {
+                header("Location: ../index.php?message=deleteFailed");
+            }
         } catch(Exception $e) {
-            echo $e->getMessage();
-            exit;
+            header("Location: ../index.php?message=deleteFailed");
         }
     }
-    header("Location: ../index.php");
 ?>

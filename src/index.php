@@ -24,24 +24,20 @@
 </head>
 <body>
     <header class="header">
-<<<<<<< HEAD
-        <h1>Hike-App</h1>
-        <a href="./php/create.php" class="add">add new hike</a>
-
-    <nav>
-        <li><a href="#">Home</a></li>
-        <?php if(!isset($_SESSION["user"])): ?>
-        <li><a href="./php/login.php">Login</a></li>
-        <li><a href="./php/subscription.php">Subscription</a></li>
-        <?php else: ?>
-        <li><a href="./php/logout.php">Logout</a></li>
-        <?php endif; ?>
-    </nav>
-    
-=======
+        
         <h1 class="mainTitle">Hike-App 🥾</h1>
         <a href="./php/create.php" class="add abutton">add new hike</a>
->>>>>>> jc
+
+        <nav>
+            <li><a href="#">Home</a></li>
+            <?php if(!isset($_SESSION["user"])): ?>
+            <li><a href="./php/login.php">Login</a></li>
+            <li><a href="./php/subscription.php">Subscription</a></li>
+            <?php else: ?>
+            <li><a href="./php/logout.php">Logout</a></li>
+            <?php endif; ?>
+        </nav>
+    
     </header>
     <main class="app">
         <?php
@@ -72,6 +68,11 @@
             }
         ?>
     </main>
+    <?php 
+        if(isset($_GET['message']) && !empty($_GET['message'])) {
+            include './php/includes/message.php';
+        }
+    ?>
     <?php include './php/includes/modal.php'; ?>
     <script>
         window.addEventListener('click', (e) => {
