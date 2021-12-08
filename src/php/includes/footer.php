@@ -1,2 +1,3 @@
-</body>
-</html>
+<div class="coucou">
+    coucou
+</div>

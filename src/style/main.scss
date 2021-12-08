@@ -43,7 +43,9 @@ html {
     justify-content: center;
     align-items: baseline;
     position: relative;
+    
     .add {
+        float: right;
         cursor: pointer;
         color: red;
         border: 1px solid black;

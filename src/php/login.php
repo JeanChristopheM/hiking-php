@@ -13,6 +13,8 @@ if(!empty($_POST)) {
 
         //SQL part
         require_once "connexion.php";
+
+
         $q = $db->prepare("SELECT * FROM user WHERE name=:login");
 
         // bindParam() accepte uniquement une variable qui est interprétée au moment de l'execute()
@@ -60,31 +62,27 @@ if(!empty($_POST)) {
 </head>
 <body>
 <nav class ="topnav">
-                <li><a href="../index.php">Home</a></li>
-                <?php if(!isset($_SESSION["user"])): ?>
-                <li><a href="#">Login</a></li>
-                <li><a href="../php/subscription.php">Subscription</a></li>
-                <?php else: ?>
-                <li><a href="./php/logout.php">Logout</a></li>
-                <?php endif; ?>
-    </nav>
+    <?php if(!isset($_SESSION["user"])): ?>
+        <div>
+            <li><a href="/index.php">Home</a></li>
+            <li><a href="/php/login.php">Login</a></li>
+            <li><a href="/php/subscription.php">Subscription</a></li>
+        </div>
+    <?php else: ?>
+        <div>
+            <li><a href="/index.php">Home</a></li>
+            <li><a href="/php/logout.php">Logout</a></li>
+        </div>
+        <li><a href="/php/create.php" class="add buttonhikes">Add New Hike</a></li>
+    <?php endif; ?>
+</nav>
     <div class="user">
         <header class="user__header">
             
             <h1 class="user__title">🥾 User Login 🥾</h1>
         </header>
         
-        <form class="form" method="post" action="">
-            <div class="form__group">
-                <input type="text" placeholder="Username" class="form__input" name="login" />
-            </div>
-            
-            <div class="form__group">
-                <input type="password" placeholder="Password" class="form__input" autocomplete="off" name="pass" />
-            </div>
-            
-            <button class="btn" type="submit">Sign In</button>
-        </form>
+        <?php include './includes/loginForm.php'; ?>
     </div>
 </body>
 </html>

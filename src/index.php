@@ -1,5 +1,7 @@
-<?php session_start(); ?>
+<?php 
+session_start(); 
 
+?>
 <?php
     require_once('./php/connexion.php');
     try {
@@ -24,56 +26,68 @@
 </head>
 <body>
 <nav class ="topnav">
-            <li><a href="#">Home</a></li>
-            <?php if(!isset($_SESSION["user"])): ?>
-            <li><a href="./php/login.php">Login</a></li>
-            <li><a href="./php/subscription.php">Subscription</a></li>
-            <?php else: ?>
-            <li><a href="./php/logout.php">Logout</a></li>
-            <?php endif; ?>
+    <?php if(!isset($_SESSION["user"])): ?>
+        <div>
+            <li><a href="/index.php">Home</a></li>
+            <li><a href="/php/login.php">Login</a></li>
+            <li><a href="/php/subscription.php">Subscription</a></li>
+        </div>
+    <?php else: ?>
+        <div>
+            <li><a href="/index.php">Home</a></li>
+            <li><a href="/php/logout.php">Logout</a></li>
+        </div>
+        <li><a href="/php/create.php" class="add buttonhikes">Add New Hike</a></li>
+    <?php endif; ?>
 </nav>
+
     <header class="header">
         
         <h1 class="mainTitle">Hike-App 🥾</h1>
-        <a href="./php/create.php" class="add abutton">add new hike</a>
-    
     </header>
     <main class="app">
         <?php
-            foreach ($hikes as $hike) {
-                $message='';
-                if($hike['createdAt'] === $hike['updatedAt']) {
-                    $message = 'Created the '.$formatDate($hike['createdAt']).'';
-                } else {
-                    $message = 'Updated the '.$formatDate($hike['updatedAt']).'';
+           
+            if(!isset($_SESSION['user'])) {
+                include './php/includes/loginForm.php';
+            } else {
+                foreach ($hikes as $hike) {
+                    $message='';
+                    if($hike['createdAt'] === $hike['updatedAt']) {
+                        $message = 'Created the '.$formatDate($hike['createdAt']).'';
+                    } else {
+                        $message = 'Updated the '.$formatDate($hike['updatedAt']).'';
+                    }
+                    echo '
+                    <div class="card">
+                        <p class="name" style="font-weight:bold;">'.$hike['name'].'</p>
+                        <div class="difficulty">
+                            <p class="card__label">Difficulty</p>
+                            <p class="card__data">'.$difficulties[$hike['difficulty']].'</p>
+                        </div>
+                        <div class="distance">
+                            <p class="card__label">Distance</p>
+                            <p class="card__data">'.$hike['distance'].'km</p>
+                        </div>
+                        <div class="duration">
+                            <p class="card__label">Duration</p>
+                            <p class="card__data">'.$hike['duration'].'</p>
+                        </div>
+                        <div class="elevation">
+                            <p class="card__label">Elevation +</p>
+                            <p class="card__data">'.$hike['elevation'].'m</p>
+                        </div>
+                        <div class="created">
+                            <p>'.$message.'</p>
+                        </div>
+                        <p class="delete"><a class="abutton delete" id='.$hike['ID'].'>DELETE</a></p>
+                        <p class="modify"><a class="abutton" href=php/update.php?ID='.$hike['ID'].' id='.$hike['ID'].'>MODIFY</a></p>
+                    </div>
+                    ';
                 }
-                echo '
-                <div class="card">
-                    <p class="name" style="font-weight:bold;">'.$hike['name'].'</p>
-                    <div class="difficulty">
-                        <p class="card__label">Difficulty</p>
-                        <p class="card__data">'.$difficulties[$hike['difficulty']].'</p>
-                    </div>
-                    <div class="distance">
-                        <p class="card__label">Distance</p>
-                        <p class="card__data">'.$hike['distance'].'km</p>
-                    </div>
-                    <div class="duration">
-                        <p class="card__label">Duration</p>
-                        <p class="card__data">'.$hike['duration'].'</p>
-                    </div>
-                    <div class="elevation">
-                        <p class="card__label">Elevation +</p>
-                        <p class="card__data">'.$hike['elevation'].'m</p>
-                    </div>
-                    <div class="created">
-                        <p>'.$message.'</p>
-                    </div>
-                    <p class="delete"><a class="abutton delete" id='.$hike['ID'].'>DELETE</a></p>
-                    <p class="modify"><a class="abutton" href=php/update.php?ID='.$hike['ID'].' id='.$hike['ID'].'>MODIFY</a></p>
-                </div>
-                ';
-            }
+            };
+        
+        
         ?>
     </main>
     <?php 
