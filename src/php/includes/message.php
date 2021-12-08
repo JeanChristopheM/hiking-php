@@ -20,13 +20,13 @@
             $color = 'red';
             break;
         case 'createdSuccess':
-                $return = 'The hike was created successfully';
-                $color = 'green';
-                break;
+            $return = 'The hike was created successfully';
+            $color = 'green';
+            break;
         case 'createdFailed':
-                $return = 'There was a problem creating the hike';
-                $color = 'red';
-                break;
+            $return = 'There was a problem creating the hike';
+            $color = 'red';
+            break;
         case 'emailUsed':
             $return = 'This email adress is already used. Please try again.';
             $color = 'red';

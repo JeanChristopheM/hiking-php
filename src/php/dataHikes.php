@@ -92,8 +92,6 @@
     } catch(Exception $e) {
         header("location: ../index.php?message=createdFailed");
         exit;
-
-        
     }
 ?>
 

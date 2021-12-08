@@ -22,32 +22,16 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Hike manager. Browse hikes in Belgium and add your contribution.">
     <title>Hike-app</title>
-    <link rel="stylesheet" href="/style/main.css">
+    <link rel="stylesheet" href="../style/main.css">
 </head>
 <body>
-<nav class ="topnav">
-    <?php if(!isset($_SESSION["user"])): ?>
-        <div>
-            <li><a href="/index.php">Home</a></li>
-            <li><a href="/php/login.php">Login</a></li>
-            <li><a href="/php/subscription.php">Subscription</a></li>
-        </div>
-    <?php else: ?>
-        <div>
-            <li><a href="/index.php">Home</a></li>
-            <li><a href="/php/logout.php">Logout</a></li>
-        </div>
-        <li><a href="/php/create.php" class="add buttonhikes">Add New Hike</a></li>
-    <?php endif; ?>
-</nav>
-
+    <?php include './php/includes/nav.php'; ?>
     <header class="header">
         
         <h1 class="mainTitle">Hike-App 🥾</h1>
     </header>
     <main class="app">
         <?php
-           
             if(!isset($_SESSION['user'])) {
                 include './php/includes/loginForm.php';
             } else {

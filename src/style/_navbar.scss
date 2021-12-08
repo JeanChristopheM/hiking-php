@@ -1,10 +1,11 @@
 .topnav {
     overflow: hidden;
     background-color: #333;
-    display: flex;justify-content: space-between;
-  }
-  
-  .topnav li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.topnav li {
     float: left;
     color: #f2f2f2;
     text-align: center;
@@ -12,19 +13,14 @@
     text-decoration: none;
     font-size: 17px;
     list-style-type: none;
+}
 
-  }
-
-  .topnav a {
+.topnav a {
     padding: 14px 16px;
     cursor: pointer;
-  }
-  
-  .topnav a:hover {
+}
+
+.topnav a:hover {
     background-color: #ddd;
     color: black;
-
-  }
-
-
-  
+}
