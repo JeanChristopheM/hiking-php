@@ -24,6 +24,24 @@ if(!empty($_POST)) {
 
         //SQL part
         require_once "connexion.php";
+
+        $q = $db->prepare('SELECT name FROM user WHERE name = :name');
+        $q->execute(array(':name'=>($_POST["login"])));
+        $dataLogin = $q->fetch();
+            if ($dataLogin) // Si une valeur est retournée c'est qu'un utilisateur possède déjà l'Username.
+            {
+                header("location: ../index.php?message=userNameUsed");
+            }
+
+
+        $q = $db->prepare('SELECT email FROM user WHERE email = :email');
+        $q->execute(array(':email'=>($_POST["email"])));
+        $donnees = $q->fetch();
+            if ($donnees) // Si une valeur est retournée c'est qu'un utilisateur possède déjà l'email.
+            {
+                header("location: ../index.php?message=emailUsed");
+            }
+
         $q = $db->prepare("INSERT INTO user(name, email, pwd) VALUES (:login, :email, :password)");
 
         // bindParam() accepte uniquement une variable qui est interprétée au moment de l'execute()
