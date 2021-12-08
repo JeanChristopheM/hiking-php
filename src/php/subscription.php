@@ -82,26 +82,26 @@ if(!empty($_POST)) {
     <title>User Subscripiton</title>
 </head>
 <body>
-<div class="user">
-    <header class="user__header">
+    <div class="user">
+        <header class="user__header">
+            
+            <h1 class="user__title">🥾 User Subscripiton 🥾</h1>
+        </header>
         
-        <h1 class="user__title">🥾 User Subscripiton 🥾</h1>
-    </header>
-    
-    <form class="form" method="post" action="">
-        <div class="form__group">
-            <input type="text" placeholder="Username" class="form__input" name="login" />
-        </div>
-        
-        <div class="form__group">
-            <input type="email" placeholder="Email" class="form__input" name="email" />
-        </div>
-        
-        <div class="form__group">
-            <input type="password" placeholder="Password" class="form__input" autocomplete="off" name="pass" />
-        </div>
-        <button class="btn" type="submit">Register</button>
-    </form>
-</div>
+        <form class="form" method="post" action="">
+            <div class="form__group">
+                <input type="text" placeholder="Username" class="form__input" name="login" />
+            </div>
+            
+            <div class="form__group">
+                <input type="email" placeholder="Email" class="form__input" name="email" />
+            </div>
+            
+            <div class="form__group">
+                <input type="password" placeholder="Password" class="form__input" autocomplete="off" name="pass" />
+            </div>
+            <button class="btn" type="submit">Register</button>
+        </form>
+    </div>
 </body>
 </html>
