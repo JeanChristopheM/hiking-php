@@ -1,0 +1,29 @@
+.modal {
+    opacity: 1;
+
+    position: fixed;
+
+    border: 1px solid black;
+    background: #376a4f;
+    padding: 1rem;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 5px 5px #376a4fc1, 0px 5px 10px #376a4fc1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    &__buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+    }
+    #modalYes,
+    #modalNo {
+        cursor: pointer;
+    }
+}
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
