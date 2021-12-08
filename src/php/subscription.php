@@ -64,7 +64,7 @@ if(!empty($_POST)) {
         // store data of user in $_SESSION
         $_SESSION["user"] = [
                 "id"=> $id,
-                "login" => $login,
+                "name" => $login,
                 "email" => $_POST["email"]
         ];
 
