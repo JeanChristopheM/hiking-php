@@ -25,21 +25,25 @@ if(!empty($_POST)) {
         //SQL part
         require_once "connexion.php";
 
-        $q = $db->prepare('SELECT name FROM user WHERE name = :name');
-        $q->execute(array(':name'=>($_POST["login"])));
+        $q = $db->prepare('SELECT name FROM user WHERE name = :login');
+        $q->bindParam(":login", $login, PDO::PARAM_STR);
+        $q->execute();
         $dataLogin = $q->fetch();
             if ($dataLogin) // Si une valeur est retournée c'est qu'un utilisateur possède déjà l'Username.
             {
                 header("location: ../index.php?message=userNameUsed");
+                exit;
             }
 
 
         $q = $db->prepare('SELECT email FROM user WHERE email = :email');
-        $q->execute(array(':email'=>($_POST["email"])));
-        $donnees = $q->fetch();
-            if ($donnees) // Si une valeur est retournée c'est qu'un utilisateur possède déjà l'email.
+        $q->bindParam(":email", $_POST["email"], PDO::PARAM_STR);
+        $q->execute();
+        $dataEmail = $q->fetch();
+            if ($dataEmail) // Si une valeur est retournée c'est qu'un utilisateur possède déjà l'email.
             {
                 header("location: ../index.php?message=emailUsed");
+                exit;
             }
 
         $q = $db->prepare("INSERT INTO user(name, email, pwd) VALUES (:login, :email, :password)");
@@ -65,7 +69,7 @@ if(!empty($_POST)) {
         ];
 
         // redirect to index when done
-        header("location: ../index.php");
+        header("location: ../index.php?message=subscriptionSuccess");
     } else {
       die("form incomplete");
     }
@@ -82,6 +86,15 @@ if(!empty($_POST)) {
     <title>User Subscripiton</title>
 </head>
 <body>
+<nav class ="topnav">
+                <li><a href="../index.php">Home</a></li>
+                <?php if(!isset($_SESSION["user"])): ?>
+                <li><a href="../php/login.php">Login</a></li>
+                <li><a href="#">Subscription</a></li>
+                <?php else: ?>
+                <li><a href="./php/logout.php">Logout</a></li>
+                <?php endif; ?>
+    </nav>
     <div class="user">
         <header class="user__header">
             

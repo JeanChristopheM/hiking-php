@@ -19,13 +19,17 @@
             $return = 'There was a problem updating the hike';
             $color = 'red';
             break;
-        case 'mailUsed':
+        case 'emailUsed':
             $return = 'This email adress is already used. Please try again.';
             $color = 'red';
             break;
         case 'userNameUsed':
             $return = 'This username is already used. Please try again.';
             $color = 'red';
+            break;
+        case 'subscriptionSuccess':
+            $return = 'Account created';
+            $color = 'green';
             break;
         default:
             print_r('error');

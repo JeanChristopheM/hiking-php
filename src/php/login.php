@@ -59,6 +59,15 @@ if(!empty($_POST)) {
     <title>User Login</title>
 </head>
 <body>
+<nav class ="topnav">
+                <li><a href="../index.php">Home</a></li>
+                <?php if(!isset($_SESSION["user"])): ?>
+                <li><a href="#">Login</a></li>
+                <li><a href="../php/subscription.php">Subscription</a></li>
+                <?php else: ?>
+                <li><a href="./php/logout.php">Logout</a></li>
+                <?php endif; ?>
+    </nav>
     <div class="user">
         <header class="user__header">
             
@@ -74,7 +83,7 @@ if(!empty($_POST)) {
                 <input type="password" placeholder="Password" class="form__input" autocomplete="off" name="pass" />
             </div>
             
-            <button class="btn" type="submit">Sign Up</button>
+            <button class="btn" type="submit">Sign In</button>
         </form>
     </div>
 </body>
