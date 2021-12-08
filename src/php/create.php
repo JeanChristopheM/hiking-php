@@ -10,15 +10,7 @@
     <link rel="stylesheet" href="../style/main.css">
 </head>
 <body>
-    <nav class ="topnav">
-                <li><a href="../index.php">Home</a></li>
-                <?php if(!isset($_SESSION["user"])): ?>
-                <li><a href="./php/login.php">Login</a></li>
-                <li><a href="./php/subscription.php">Subscription</a></li>
-                <?php else: ?>
-                <li><a href="./php/logout.php">Logout</a></li>
-                <?php endif; ?>
-    </nav>
+    <?php include './includes/nav.php'; ?>
     <header class="header">
         <h1 class="title">Create a new hike</h1>
     </header>

@@ -20,18 +20,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Hike manager. Browse hikes in Belgium and add your contribution.">
     <title>Hike-app</title>
-    <link rel="stylesheet" href="/style/main.css">
+    <link rel="stylesheet" href="../style/main.css">
 </head>
 <body>
-<nav class ="topnav">
-            <li><a href="#">Home</a></li>
-            <?php if(!isset($_SESSION["user"])): ?>
-            <li><a href="./php/login.php">Login</a></li>
-            <li><a href="./php/subscription.php">Subscription</a></li>
-            <?php else: ?>
-            <li><a href="./php/logout.php">Logout</a></li>
-            <?php endif; ?>
-</nav>
+    <?php include './php/includes/nav.php'; ?>
     <header class="header">
         
         <h1 class="mainTitle">Hike-App 🥾</h1>

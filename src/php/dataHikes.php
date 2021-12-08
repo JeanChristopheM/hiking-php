@@ -87,13 +87,11 @@
         $q->bindParam(":updatedAt", $updatedAt, PDO::PARAM_INT, 20);
         $q->execute();
         $hike = $q->fetch(PDO::FETCH_ASSOC);
-    } catch(Exception $e) {
-        echo $e->getMessage();
+        header("location: ../index.php?message=createdSuccess");
         exit;
-
-        
+    } catch(Exception $e) {
+        header("location: ../index.php?message=createdFailed");
+        exit;
     }
-    header("location: ../index.php");
-    exit;
 ?>
 
