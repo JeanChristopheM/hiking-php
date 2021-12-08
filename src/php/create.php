@@ -9,7 +9,7 @@
 </head>
 <body>
     <header class="header">
-        <h1>Create a new hike</h1>
+        <h1 class="title">Create a new hike</h1>
     </header>
     <form action="dataHikes.php" method="post" class="updateForm">
         <ul>

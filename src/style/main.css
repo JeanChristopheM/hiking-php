@@ -223,9 +223,9 @@ html {
   flex: 1 1 100%;
   border: 1px solid black;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, -webkit-max-content);
-  grid-template-rows: repeat(3, max-content);
-  grid-template-areas: "name name name" "distance duration modify" "elevation difficulty delete";
+  grid-template-rows: repeat(4, -webkit-max-content);
+  grid-template-rows: repeat(4, max-content);
+  grid-template-areas: "name name name" "distance duration modify" "elevation difficulty delete" "created created created";
   gap: 0.5rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
@@ -269,6 +269,11 @@ html {
 .card .difficulty,
 .card .duration {
   justify-self: right;
+}
+.card .created {
+  grid-area: created;
+  font-size: 0.6rem;
+  justify-self: center;
 }
 .card p {
   line-height: 1.5;
@@ -317,6 +322,11 @@ button {
     right: -4px;
     opacity: 1;
   }
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 .updateForm {

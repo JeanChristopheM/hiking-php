@@ -71,15 +71,20 @@
         $dataElevation = filter_var($elevation, FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min, "max_range"=>$max)));
     }
 
+    $createdAt = date('U');
+    $updatedAt = date('U');
+
     require_once ("connexion.php");
 
     try {
-        $q = $db -> prepare("INSERT INTO hikes (name, difficulty, distance, duration, elevation) VALUES (:dataName, :dataDifficulty, :dataDistance, :dataDuration, :dataElevation)");
+        $q = $db -> prepare("INSERT INTO hikes (name, difficulty, distance, duration, elevation, createdAt, updatedAt) VALUES (:dataName, :dataDifficulty, :dataDistance, :dataDuration, :dataElevation, :createdAt, :updatedAt)");
         $q->bindParam(":dataName", $dataName, PDO::PARAM_STR, 40);
         $q->bindParam(":dataDifficulty", $dataDifficulty, PDO::PARAM_INT, 1);
         $q->bindParam(":dataDistance", $dataDistance, PDO::PARAM_STR, 6);
         $q->bindParam(":dataDuration", $dataDuration, PDO::PARAM_STR, 5);
         $q->bindParam(":dataElevation", $dataElevation, PDO::PARAM_INT, 5);
+        $q->bindParam(":createdAt", $createdAt, PDO::PARAM_INT, 20);
+        $q->bindParam(":updatedAt", $updatedAt, PDO::PARAM_INT, 20);
         $q->execute();
         $hike = $q->fetch(PDO::FETCH_ASSOC);
     } catch(Exception $e) {

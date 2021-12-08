@@ -42,6 +42,12 @@
     <main class="app">
         <?php
             foreach ($hikes as $hike) {
+                $message='';
+                if($hike['createdAt'] === $hike['updatedAt']) {
+                    $message = 'Created the '.$formatDate($hike['createdAt']).'';
+                } else {
+                    $message = 'Updated the '.$formatDate($hike['updatedAt']).'';
+                }
                 echo '
                 <div class="card">
                     <p class="name" style="font-weight:bold;">'.$hike['name'].'</p>
@@ -60,6 +66,9 @@
                     <div class="elevation">
                         <p class="card__label">Elevation +</p>
                         <p class="card__data">'.$hike['elevation'].'m</p>
+                    </div>
+                    <div class="created">
+                        <p>'.$message.'</p>
                     </div>
                     <p class="delete"><a class="abutton delete" id='.$hike['ID'].'>DELETE</a></p>
                     <p class="modify"><a class="abutton" href=php/update.php?ID='.$hike['ID'].' id='.$hike['ID'].'>MODIFY</a></p>

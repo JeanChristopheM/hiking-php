@@ -32,7 +32,7 @@
 </head>
 <body>
     <header class="header">
-        <h1>Update hike info</h1>
+        <h1 class="title">Update hike info</h1>
     </header>
     <form action="updateData.php" method="post" class="updateForm">
         <ul>

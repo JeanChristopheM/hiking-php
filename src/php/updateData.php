@@ -9,6 +9,7 @@
         $distance = $_POST['distance'];
         $hours = intval(ltrim(strval($_POST['hours']), "0"));
         $minutes = intval(ltrim(strval($_POST['minutes']), "0"));
+        $updatedAt = date('U');
 
         $errors = [];
         $error = false;
@@ -103,7 +104,8 @@
             difficulty = :difficulty,
             distance = :distance,
             duration = :duration,
-            elevation = :elevation
+            elevation = :elevation,
+            updatedAt = :updatedAt
             WHERE ID = :ID';
             try {
                 $q = $db -> prepare($query);
@@ -112,6 +114,7 @@
                 $q->bindParam(':distance', $distance, PDO::PARAM_STR, 50);
                 $q->bindParam(':duration', $duration, PDO::PARAM_STR, 50);
                 $q->bindParam(':elevation', $elevation, PDO::PARAM_INT);
+                $q->bindParam(':updatedAt', $updatedAt, PDO::PARAM_INT);
                 $q->bindParam(':ID', $ID, PDO::PARAM_INT);
                 
                 $q->execute();
@@ -119,12 +122,11 @@
                 echo $e->getMessage();
                 exit;
             }
-            header("Location: ../index.php");
+            header("Location: ../index.php?message=updateSuccess");
             exit;
         } else {
-            foreach($errors as $key => $error) {
-                print_r("$key has $error error");
-            }
+            header("Location: ../index.php?message=updateFailed");
+            exit;
         }
     }
 ?>

@@ -11,6 +11,14 @@
             $return = 'There was a problem deleting the hike';
             $color = 'red';
             break;
+        case 'updateSuccess':
+            $return = 'The hike was updated successfully';
+            $color = 'green';
+            break;
+        case 'updateFailed':
+            $return = 'There was a problem updating the hike';
+            $color = 'red';
+            break;
         case 'mailUsed':
             $return = 'This email adress is already used. Please try again.';
             $color = 'red';
