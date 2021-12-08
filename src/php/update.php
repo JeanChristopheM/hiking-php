@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <?php
     require_once('./connexion.php');
     if(isset($_GET['ID']) && !empty($_GET['ID'])) {
@@ -30,6 +32,15 @@
     </title>
     <link rel="stylesheet" href="../style/main.css">
 </head>
+<nav class ="topnav">
+                <li><a href="../index.php">Home</a></li>
+                <?php if(!isset($_SESSION["user"])): ?>
+                <li><a href="./php/login.php">Login</a></li>
+                <li><a href="./php/subscription.php">Subscription</a></li>
+                <?php else: ?>
+                <li><a href="./php/logout.php">Logout</a></li>
+                <?php endif; ?>
+    </nav>
 <body>
     <header class="header">
         <h1>Update hike info</h1>

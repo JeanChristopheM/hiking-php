@@ -23,12 +23,7 @@
     <link rel="stylesheet" href="/style/main.css">
 </head>
 <body>
-    <header class="header">
-        
-        <h1 class="mainTitle">Hike-App 🥾</h1>
-        <a href="./php/create.php" class="add abutton">add new hike</a>
-
-        <nav>
+<nav class ="topnav">
             <li><a href="#">Home</a></li>
             <?php if(!isset($_SESSION["user"])): ?>
             <li><a href="./php/login.php">Login</a></li>
@@ -36,7 +31,11 @@
             <?php else: ?>
             <li><a href="./php/logout.php">Logout</a></li>
             <?php endif; ?>
-        </nav>
+</nav>
+    <header class="header">
+        
+        <h1 class="mainTitle">Hike-App 🥾</h1>
+        <a href="./php/create.php" class="add abutton">add new hike</a>
     
     </header>
     <main class="app">

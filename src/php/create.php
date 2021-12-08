@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +10,15 @@
     <link rel="stylesheet" href="../style/main.css">
 </head>
 <body>
+    <nav class ="topnav">
+                <li><a href="../index.php">Home</a></li>
+                <?php if(!isset($_SESSION["user"])): ?>
+                <li><a href="./php/login.php">Login</a></li>
+                <li><a href="./php/subscription.php">Subscription</a></li>
+                <?php else: ?>
+                <li><a href="./php/logout.php">Logout</a></li>
+                <?php endif; ?>
+    </nav>
     <header class="header">
         <h1>Create a new hike</h1>
     </header>
