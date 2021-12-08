@@ -219,24 +219,6 @@ html {
   align-items: baseline;
   position: relative;
 }
-.header .add {
-  float: right;
-  cursor: pointer;
-  color: red;
-  border: 1px solid black;
-  border-radius: 0.2rem;
-  margin-left: 2rem;
-  position: absolute;
-  right: 1rem;
-  top: 0.2rem;
-  padding: 0.2rem;
-}
-@media screen and (min-width: 768px) {
-  .header .add {
-    top: 1rem;
-    padding: 1rem;
-  }
-}
 
 .app {
   display: flex;
