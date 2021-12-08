@@ -12,8 +12,6 @@
     }
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +25,17 @@
     <header class="header">
         <h1>Hike-App</h1>
         <a href="./php/create.php" class="add">add new hike</a>
+
+    <nav>
+        <li><a href="#">Home</a></li>
+        <?php if(!isset($_SESSION["user"])): ?>
+        <li><a href="./php/login.php">Login</a></li>
+        <li><a href="./php/subscription.php">Subscription</a></li>
+        <?php else: ?>
+        <li><a href="./php/logout.php">Logout</a></li>
+        <?php endif; ?>
+    </nav>
+    
     </header>
     <main class="app">
         <?php

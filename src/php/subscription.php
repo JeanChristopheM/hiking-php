@@ -24,7 +24,7 @@ if(!empty($_POST)) {
 
         //SQL part
         require_once "connexion.php";
-        $q = $db->prepare("INSERT INTO users(login, email, password) VALUES (:login, :email, :password)");
+        $q = $db->prepare("INSERT INTO user(name, email, pwd) VALUES (:login, :email, :password)");
 
         // bindParam() accepte uniquement une variable qui est interprétée au moment de l'execute()
         $q->bindParam(":login", $login, PDO::PARAM_STR);
@@ -47,36 +47,43 @@ if(!empty($_POST)) {
         ];
 
         // redirect to index when done
-        header("location: index.php");
+        header("location: ../index.php");
     } else {
       die("form incomplete");
     }
 }
 
-include "includes/header.php";
-
 ?>
-
-<h1>User subscription</h1>
-
-    <form method="post" action="">
-        <div>
-            <label for="login">Login :</label>
-            <input type="text" name="login">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/main.css">
+    <title>User Subscripiton</title>
+</head>
+<body>
+<div class="user">
+    <header class="user__header">
+        
+        <h1 class="user__title">🥾 User Subscripiton 🥾</h1>
+    </header>
+    
+    <form class="form" method="post" action="">
+        <div class="form__group">
+            <input type="text" placeholder="Username" class="form__input" name="login" />
         </div>
-        <div>
-            <label for="email">Email :</label>
-            <input type="email" name="email">
+        
+        <div class="form__group">
+            <input type="email" placeholder="Email" class="form__input" name="email" />
         </div>
-        <div>
-            <label for="pass">Password :</label>
-            <input type="text" name="pass">
+        
+        <div class="form__group">
+            <input type="password" placeholder="Password" class="form__input" autocomplete="off" name="pass" />
         </div>
-        <button type="submit">Subscribe</button>
+        <button class="btn" type="submit">Register</button>
     </form>
-
-
-
-<?php
-    include "includes/footer.php";
-?>
+</div>
+</body>
+</html>

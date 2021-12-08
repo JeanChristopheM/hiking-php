@@ -8,13 +8,5 @@
 <body>
 
 <header>
-    <nav>
-        <li><a href="../index.php">Home</a></li>
-        <?php if(!isset($_SESSION["user"])): ?>
-        <li><a href="login.php">Login</a></li>
-        <li><a href="subscription.php">Subscription</a></li>
-        <?php else: ?>
-        <li><a href="logout.php">Logout</a></li>
-        <?php endif; ?>
-    </nav>
+
 </header>

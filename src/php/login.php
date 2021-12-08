@@ -13,7 +13,7 @@ if(!empty($_POST)) {
 
         //SQL part
         require_once "connexion.php";
-        $q = $db->prepare("SELECT * FROM users WHERE login=:login");
+        $q = $db->prepare("SELECT * FROM user WHERE name=:login");
 
         // bindParam() accepte uniquement une variable qui est interprétée au moment de l'execute()
         $q->bindParam(":login", $login, PDO::PARAM_STR);
@@ -30,43 +30,52 @@ if(!empty($_POST)) {
         }
 
         // check the password input with the password in db
-        if(!password_verify($_POST["pass"], $user["password"])){
+        if(!password_verify($_POST["pass"], $user["pwd"])){
             die("user doesn't exist &/or password incorrect");
         }
 
 
         // store data of user in $_SESSION
         $_SESSION["user"] = [
-            "id" => $user["id"],
-            "login" => $user["login"],
+            "ID" => $user["ID"],
+            "name" => $user["name"],
             "email" => $user["email"]
         ];
 
-        header("location: index.php");
+        header("location: ../index.php");
 
     }
+
 }
 
-include "includes/header.php";
-
 ?>
-
-    <h1>User Login</h1>
-
-    <form method="post" action="">
-        <div>
-            <label for="login">Login :</label>
-            <input type="text" name="login">
-        </div>
-        <div>
-            <label for="pass">Password</label>
-            <input type="text" name="pass">
-        </div>
-        <button type="submit">Login</button>
-    </form>
-
-
-
-<?php
-include "includes/footer.php";
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/main.css">
+    <title>User Login</title>
+</head>
+<body>
+    <div class="user">
+        <header class="user__header">
+            
+            <h1 class="user__title">🥾 User Login 🥾</h1>
+        </header>
+        
+        <form class="form" method="post" action="">
+            <div class="form__group">
+                <input type="text" placeholder="Username" class="form__input" name="login" />
+            </div>
+            
+            <div class="form__group">
+                <input type="password" placeholder="Password" class="form__input" autocomplete="off" name="pass" />
+            </div>
+            
+            <button class="btn" type="submit">Sign Up</button>
+        </form>
+    </div>
+</body>
+</html>
