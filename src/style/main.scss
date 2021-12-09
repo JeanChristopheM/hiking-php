@@ -1,24 +1,98 @@
 @import "reset";
 @import "vars";
+@import "navbar";
+@import "subscription";
+html {
+    font-family: sans-serif;
+    background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
 
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+
+    color: rgb(28, 28, 28);
+}
+.mainTitle {
+    font-size: 2rem;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    @media screen and (min-width: 768px) {
+        font-size: 4rem;
+        text-stroke: 4px rgb(28, 28, 28);
+        -webkit-text-stroke: 4px rgb(28, 28, 28);
+        text-fill-color: transparent;
+        -webkit-text-fill-color: transparent;
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: -0.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 8px;
+        width: 100%;
+        background: transparent;
+        border: 2px solid rgb(28, 28, 28);
+        box-shadow: 0px 0px 5px rgb(28, 28, 28);
+    }
+}
+.header {
+    padding-block: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    position: relative;
+    
+    .add {
+        float: right;
+        cursor: pointer;
+        color: red;
+        border: 1px solid black;
+        border-radius: 0.2rem;
+        margin-left: 2rem;
+        position: absolute;
+        right: 1rem;
+        top: 0.2rem;
+        padding: 0.2rem;
+        @media screen and (min-width: 768px) {
+            top: 1rem;
+            padding: 1rem;
+        }
+    }
+}
 .app {
     display: flex;
     flex-wrap: wrap;
+    gap: 1rem;
+    margin-inline: 1rem;
+    margin-bottom: 2rem;
 }
 .card {
     display: grid;
-    max-width: 300px;
+    flex: 1 1 100%;
     border: 1px solid black;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, max-content);
+    grid-template-rows: repeat(4, max-content);
     grid-template-areas:
-        "name difficulty modify"
-        "distance duration delete"
-        "elevation elevation delete";
+        "name name name"
+        "distance duration modify"
+        "elevation difficulty delete"
+        "created created created";
     gap: 0.5rem;
     padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 5px 5px #376a4fc1, 0px 5px 10px #376a4fc1;
+    @media screen and (min-width: 768px) {
+        flex: 1 1 calc(50% - 2rem);
+    }
+    @media screen and (min-width: 1200px) {
+        flex: 1 1 calc(33.3% - 2rem);
+    }
     .name {
         grid-area: name;
+        justify-self: center;
+        text-decoration: underline;
     }
     .distance {
         grid-area: distance;
@@ -31,7 +105,6 @@
     }
     .elevation {
         grid-area: elevation;
-        justify-self: center;
     }
     .modify {
         grid-area: modify;
@@ -45,8 +118,69 @@
     .duration {
         justify-self: right;
     }
-    a {
-        cursor: pointer;
-        border: 1px solid black;
+    .created {
+        grid-area: created;
+        font-size: 0.6rem;
+        justify-self: center;
+    }
+    p {
+        line-height: 1.5;
+    }
+    &__label {
+        text-decoration: underline;
+        font-size: 0.9em;
+    }
+    &__data {
+        font-size: 0.8em;
+    }
+    @media (hover: hover) {
+        &:hover {
+            // PLEASE CONTINUE ME JC !
+        }
     }
 }
+button {
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 0.2rem;
+    padding: 0.5rem;
+}
+.abutton {
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 0.2rem;
+    padding: 0.2rem;
+    position: relative;
+    display: block;
+    &::before {
+        pointer-events: none;
+        content: "";
+        position: absolute;
+        border: 4px solid rgb(69, 77, 62);
+        transition-duration: 0.2s;
+        transition-property: top, right, bottom, left, opacity;
+        top: -1rem;
+        left: -1rem;
+        bottom: -1rem;
+        right: -1rem;
+        opacity: 0;
+        border-radius: 0.5rem;
+    }
+    @media (hover: hover) {
+        &:hover::before {
+            top: -4px;
+            left: -4px;
+            bottom: -4px;
+            right: -4px;
+            opacity: 1;
+        }
+    }
+}
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+@import "updateForm";
+@import "modal";
+@import "message";
+@import "info";
