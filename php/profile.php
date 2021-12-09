@@ -1,15 +1,13 @@
 <?php 
     session_start();
+    if(!isset($_SESSION['user'])) {
+        header('Location: /index.php');
+        exit;
+    }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hike-App</title>
-    <link rel="stylesheet" href="../style/main.css">
-</head>
+
+<?php include './php/includes/doctype.php'; ?>
+
 <body>
     <?php include './includes/nav.php'; ?>
     <header class="header">
@@ -36,10 +34,7 @@
                         <input type="hidden" name="edit" value="true" />
                         <button class="abutton">Edit</button>
                     </form>
-                    <form action="/php/deleteUser.php" method="post">
-                        <input type="hidden" name="delete" value="true" />
-                        <button class="abutton">Delete</button>
-                    </form>
+                    <button type="button" class="abutton delete">Delete</button>
                 </li>
             </ul>
         <?php else: ?>
@@ -64,5 +59,19 @@
             </form>
         <?php endif; ?>
     </main>
+    <?php include './includes/modal.php'; ?>
+    <script>
+        window.addEventListener('click', (e) => {
+            const modal = document.querySelector('.modal');
+            if(e.target.classList.contains('delete') && e.target.classList.contains('abutton')) {
+                modal.classList.remove('hidden');
+                const yes = document.querySelector('#modalYes');
+                yes.href = `./deleteUser.php`;
+            }
+            if(e.target.id == "modalNo") {
+                modal.classList.add('hidden');
+            }
+        });
+    </script>
 </body>
 </html>

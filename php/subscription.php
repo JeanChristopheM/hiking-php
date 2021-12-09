@@ -63,7 +63,7 @@ if(!empty($_POST)) {
 
         // store data of user in $_SESSION
         $_SESSION["user"] = [
-                "id"=> $id,
+                "ID"=> $id,
                 "name" => $login,
                 "email" => $_POST["email"]
         ];
@@ -71,20 +71,13 @@ if(!empty($_POST)) {
         // redirect to index when done
         header("location: ../index.php?message=subscriptionSuccess");
     } else {
-      die("form incomplete");
+        die("form incomplete");
     }
 }
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/main.css">
-    <title>User Subscripiton</title>
-</head>
+<?php include '../php/includes/doctype.php'; ?>
+
 <body>
     <?php include './includes/nav.php'; ?>
     <div class="user">
