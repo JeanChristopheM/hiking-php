@@ -1,15 +1,35 @@
-<nav class ="topnav">
+<nav class ="topnav" id="topnav">
     <?php if(!isset($_SESSION["user"])): ?>
         <div>
-            <li><a href="/index.php">Home</a></li>
-            <li><a href="/php/login.php">Login</a></li>
-            <li><a href="/php/subscription.php">Subscription</a></li>
+        <a href="/index.php">Home</a>
+        <a href="/php/login.php">Login</a>
+        <a href="/php/subscription.php">Subscription</a>
         </div>
+        <button class="icon" onclick="toggle()"><i class="fa fa-bars"></i></button>
+        <script>
+        function toggle() {
+        const nav = document.getElementById("topnav");
+        nav.className === "topnav" ? nav.className += " responsive" : nav.className = "topnav";
+        }
+        </script>
     <?php else: ?>
         <div>
-            <li><a href="/index.php">Home</a></li>
-            <li><a href="/php/logout.php">Logout</a></li>
+        <a href="/index.php">Home</a>
+        <a href="/php/logout.php">Logout</a>
+        <a href="/php/create.php" class="add buttonhikes" id="newhikebutton">Add New Hike</a>
         </div>
-        <li><a href="/php/create.php" class="add buttonhikes">Add New Hike</a></li>
+        <button class="icon" onclick="toggle()"><i class="fa fa-bars"></i></button>
+
+        <script>
+        function toggle() {
+        const nav = document.getElementById("topnav");
+        nav.className === "topnav" ? nav.className += " responsive" : nav.className = "topnav";
+        }
+        </script>
+        
     <?php endif; ?>
+
 </nav>
+
+  
+ 
