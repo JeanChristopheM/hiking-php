@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!isset($_SESSION['user'])) {
+    header('Location: /index.php');
+    exit;
+}
     if (isset($_POST['name']) && isset($_POST['difficulty']) && isset($_POST['hours']) && isset($_POST['elevation']) && isset($_POST['distance'])) {
         
         

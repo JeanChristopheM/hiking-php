@@ -1,5 +1,9 @@
 <?php 
     session_start();
+    if(!isset($_SESSION['user'])) {
+        header('Location: /index.php');
+        exit;
+    }
 ?>
 
 <?php include './php/includes/doctype.php'; ?>
@@ -30,10 +34,7 @@
                         <input type="hidden" name="edit" value="true" />
                         <button class="abutton">Edit</button>
                     </form>
-                    <form action="/php/deleteUser.php" method="post">
-                        <input type="hidden" name="delete" value="true" />
-                        <button class="abutton">Delete</button>
-                    </form>
+                    <button type="button" class="abutton delete">Delete</button>
                 </li>
             </ul>
         <?php else: ?>
@@ -58,5 +59,19 @@
             </form>
         <?php endif; ?>
     </main>
+    <?php include './includes/modal.php'; ?>
+    <script>
+        window.addEventListener('click', (e) => {
+            const modal = document.querySelector('.modal');
+            if(e.target.classList.contains('delete') && e.target.classList.contains('abutton')) {
+                modal.classList.remove('hidden');
+                const yes = document.querySelector('#modalYes');
+                yes.href = `./deleteUser.php`;
+            }
+            if(e.target.id == "modalNo") {
+                modal.classList.add('hidden');
+            }
+        });
+    </script>
 </body>
 </html>

@@ -14,6 +14,7 @@
         </script>
     <?php else: ?>
         <div>
+<<<<<<< HEAD
         <a href="/index.php">Home</a>
         <a href="/php/logout.php">Logout</a>
         <a href="/php/create.php" class="add buttonhikes" id="newhikebutton">Add New Hike</a>
@@ -27,6 +28,13 @@
         }
         </script>
         
+=======
+            <li><a href="/index.php">Home</a></li>
+            <li><a href="/php/profile.php">Profile</a></li>
+            <li><a href="/php/logout.php">Logout</a></li>
+        </div>
+        <li><a href="/php/create.php" class="buttonhikes">Add New Hike</a></li>
+>>>>>>> jc
     <?php endif; ?>
 
 </nav>

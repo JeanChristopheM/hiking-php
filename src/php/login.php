@@ -22,18 +22,21 @@ if(!empty($_POST)) {
 
         // exexute return a boolean
         if(!$q->execute()) {
-            die("form not sent to the db");
+            header('Location: /index.php?message=formError');
+            exit;
         }
 
         $user = $q->fetch(PDO::FETCH_ASSOC);
 
         if(!$user) {
-            die("user doesn't exist &/or password incorrect");
+            header('Location: /index.php?message=noUser');
+            exit;
         }
 
         // check the password input with the password in db
         if(!password_verify($_POST["pass"], $user["pwd"])){
-            die("user doesn't exist &/or password incorrect");
+            header('Location: /index.php?message=wrongPwd');
+            exit;
         }
 
 

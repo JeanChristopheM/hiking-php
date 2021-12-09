@@ -39,6 +39,22 @@
             $return = 'Account created';
             $color = 'green';
             break;
+        case 'deleteUserFailed':
+            $return = 'There was an issue deleting the account. Please contact the administrator';
+            $color = 'red';
+            break;
+        case 'formError':
+            $return = 'There was an issue connecting to the database. Please contact the administrator';
+            $color = 'red';
+            break;
+        case 'noUser':
+            $return = 'This username does not exist.';
+            $color = 'red';
+            break;
+        case 'wrongPwd':
+            $return = 'The password doesn\' match for that user.';
+            $color = 'red';
+            break;
         default:
             print_r('error');
 
