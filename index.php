@@ -1,1 +1,1 @@
-<?php echo 'coucou'; ?>
+<?php include './src/index.php'; ?>
