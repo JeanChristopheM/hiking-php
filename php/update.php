@@ -15,7 +15,7 @@
     }
 ?>
 
-<?php include './php/includes/doctype.php'; ?>
+<?php include '../php/includes/doctype.php'; ?>
     <title>
         <?php
             if ($ID) {
