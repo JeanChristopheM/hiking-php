@@ -1,4 +1,9 @@
 <?php
+    session_start();
+    if(!isset($_SESSION['user'])) {
+        header('Location: /index.php');
+        exit;
+    }
     require_once('./connexion.php');
     if(isset($_GET['ID']) && !empty($_GET['ID'])) {
         $ID = $_GET['ID'];

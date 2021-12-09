@@ -1,16 +1,15 @@
 <?php 
-session_start(); 
-
-?>
-<?php
-    require_once('./php/connexion.php');
-    try {
-        $q = $db -> prepare("SELECT * FROM hikes");
-        $q->execute();
-        $hikes = $q->fetchAll(PDO::FETCH_ASSOC);
-    } catch(Exception $e) {
-        echo $e->getMessage();
-        exit;
+    session_start(); 
+    if(isset($_SESSION['user'])) {
+        require_once('./php/connexion.php');
+        try {
+            $q = $db -> prepare("SELECT * FROM hikes");
+            $q->execute();
+            $hikes = $q->fetchAll(PDO::FETCH_ASSOC);
+        } catch(Exception $e) {
+            echo $e->getMessage();
+            exit;
+        }
     }
 ?>
 
