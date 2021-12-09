@@ -1,0 +1,8 @@
+{
+    "buildpacks": [
+        {
+            "url": "heroku/php"
+        }
+    ],
+    "stack": "container"
+}
