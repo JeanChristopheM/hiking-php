@@ -1,0 +1,70 @@
+<?php
+    require_once('./connexion.php');
+    if(isset($_GET['ID']) && !empty($_GET['ID'])) {
+        $ID = $_GET['ID'];
+        try {
+            $q = $db -> prepare("SELECT * FROM hikes WHERE ID = $ID");
+            $q->execute();
+            $hike = $q->fetch(PDO::FETCH_ASSOC);
+        } catch(Exception $e) {
+            echo $e->getMessage();
+            exit;
+        }
+    }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <?php
+            if ($ID) {
+                echo 'Hike n° '.$ID;
+            } else {
+                echo '404';
+            }
+        ?>
+    </title>
+    <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+    <form method="post">
+        <ul>
+            <li>
+                <label for='name'>Title : <br/></label>
+                <input type="text" name="name" id="name" value="<?php echo $hike['name']; ?>">
+            </li>
+            <li>
+                Difficulty : <br/>
+                <label for='easy'>Easy</label>
+                <input type="radio" name="difficulty" id="easy" value="0"
+                <?php if($hike['difficulty'] == 0) echo 'checked' ?>
+                >
+                <label for='moderate'>Moderate</label>
+                <input type="radio" name="difficulty" id="moderate" value="1"
+                <?php if($hike['difficulty'] == 1) echo 'checked' ?>
+                >
+                <label for='hard'>Hard</label>
+                <input type="radio" name="difficulty" id="hard" value="2"
+                <?php if($hike['difficulty'] == 2) echo 'checked' ?>
+                >
+            </li>
+            <li>
+                <label for='distance'>Distance : <br/></label>
+                <input type="text" name="distance" id="distance" value="<?php echo $hike['distance']; ?>"><span>km</span>
+            </li>
+            <li>
+                <label for="duration">Duration : <br/></label>
+                <input type="time" id="duration" name="duration" min="00:00" max="23:59" value="<?php echo str_replace(['H','h'], ':', $hike['duration'])?>">
+            </li>
+            <li>
+                <label for="elevation">Elevation : <br/></label>
+                <input type="number" name="elevation" id="elevation" value="<?php echo $hike['elevation']; ?>"><span>m</span>
+            </li>
+        </ul>
+    </form>
+</body>
+</html>
