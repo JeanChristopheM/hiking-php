@@ -1,4 +1,7 @@
 <?php
+    // SI ON A PAS LES VARIABLES D'ENVIRONEMENT,
+    // CA VEUT DIRE QU'ON EST EN DEVELOPPEMENT
+    // DONC ON CHANRGE LE ENV.PHP
     if(!isset($_ENV['HOST']) || !isset($_ENV['USR']) || !isset($_ENV['PASS'])) {
         include 'env.php';
     }
