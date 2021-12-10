@@ -46,7 +46,7 @@
                     </li>
                     <li>
                         <h3>Password : </h3>
-                        <p><input type="text" name="pwd" placeholder="********" /></p>
+                        <p><input type="password" name="pwd" placeholder="********" /></p>
                     </li>
                     <li>
                         <h3>Mail : </h3>

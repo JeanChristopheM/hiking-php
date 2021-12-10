@@ -1,6 +1,7 @@
 <?php
 session_start();
-if(!isset($_POST['name']) || !isset($_POST['pwd']) || !isset($_SESSION['user'])) {
+if(!isset($_POST['name']) || empty($_POST['name']) || 
+!isset($_POST['pwd']) || empty($_POST['pwd']) || !isset($_SESSION['user'])) {
     header("Location: /index.php?message=errorModify");
     exit;
 } else {
