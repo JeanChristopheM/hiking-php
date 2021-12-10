@@ -30,11 +30,12 @@ session_start();
         
         <h1 class="mainTitle">Hike-App 🥾</h1>
     </header>
-    <main class="app">
+    
         <?php
             if(!isset($_SESSION['user'])) {
                 include './php/includes/loginForm.php';
             } else {
+                echo '<main class="app">';
                 foreach ($hikes as $hike) {
                     $message='';
                     if($hike['createdAt'] === $hike['updatedAt']) {
@@ -69,11 +70,12 @@ session_start();
                     </div>
                     ';
                 }
+                echo '</main>';
             };
         
         
         ?>
-    </main>
+    
     <?php 
         if(isset($_GET['message']) && !empty($_GET['message'])) {
             include './php/includes/message.php';

@@ -55,6 +55,14 @@
             $return = 'The password doesn\' match for that user.';
             $color = 'red';
             break;
+        case 'errorModify':
+            $return = 'There was an error modifying your data. Please try again later.';
+            $color = 'red';
+            break;
+        case 'modifySuccess':
+            $return = 'Information modified successfully.';
+            $color = 'green';
+            break;
         default:
             print_r('error');
 
