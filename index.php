@@ -1,6 +1,5 @@
 <?php 
-session_start(); 
-
+session_start();
 ?>
 <?php
     require_once('./php/connexion.php');
