@@ -1,13 +1,12 @@
 <?php
-    if(!isset($_ENV['HOST']) || !isset($_ENV['USR']) || !isset($_ENV['PWD'])) {
+    if(!isset($_ENV['HOST']) || !isset($_ENV['USR']) || !isset($_ENV['PASS'])) {
         include 'env.php';
     }
     try {
-        $db = new PDO('mysql:host='.$_ENV['HOST'].';dbname='.$_ENV['USR'].';port=3306', $_ENV['USR'], $_ENV['PWD']);
+        $db = new PDO('mysql:host='.$_ENV['HOST'].';dbname='.$_ENV['USR'].';port=3306', $_ENV['USR'], $_ENV['PASS']);
         $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     } catch(Exception $e) {
         echo $e->getMessage();
-        echo 'what';
         exit;
     }
     
