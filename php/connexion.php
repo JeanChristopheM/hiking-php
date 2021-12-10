@@ -3,7 +3,7 @@
     // CA VEUT DIRE QU'ON EST EN DEVELOPPEMENT
     // DONC ON CHANRGE LE ENV.PHP
     if(!isset($_ENV['HOST']) || !isset($_ENV['USR']) || !isset($_ENV['PASS'])) {
-        include 'env.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/env.php';
     }
     try {
         $db = new PDO('mysql:host='.$_ENV['HOST'].';dbname='.$_ENV['USR'].';port=3306', $_ENV['USR'], $_ENV['PASS']);
