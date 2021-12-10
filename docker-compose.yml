@@ -1,12 +1,12 @@
 ---
 version: "3"
 services:
-  php:
-    # image: "becodeorg/php"
-    build: "./"
-    volumes:
-      - "./src:/var/www/html"
-    ports:
-      - "80:80"
+    php:
+        # image: "becodeorg/php"
+        build: "./"
+        volumes:
+            - "./:/var/www/html"
+        ports:
+            - "80:80"
 volumes:
-  mysql_db:
+    mysql_db:

@@ -6,7 +6,7 @@
     }
 ?>
 
-<?php include './php/includes/doctype.php'; ?>
+<?php include '../php/includes/doctype.php'; ?>
 
 <body>
     <?php include './includes/nav.php'; ?>
@@ -42,11 +42,11 @@
                 <ul>
                     <li>
                         <h3>Username : </h3>
-                        <p><input type="text" placeholder="<?=$_SESSION['user']["name"];?>"></p>
+                        <p><input type="text" name="name" placeholder="<?=$_SESSION['user']["name"];?>"></p>
                     </li>
                     <li>
                         <h3>Password : </h3>
-                        <p><input type="text" placeholder="********" /></p>
+                        <p><input type="text" name="pwd" placeholder="********" /></p>
                     </li>
                     <li>
                         <h3>Mail : </h3>
