@@ -1,11 +1,10 @@
 #newhikebutton {
-        position: absolute;
-        right: 0;
-        top: 0;
-        @media screen and (max-width: 768px) {
-            position: relative;
-            
-        }
+    position: absolute;
+    right: 0;
+    top: 0;
+    @media screen and (max-width: 768px) {
+        position: relative;
+    }
 }
 
 .topnav {
@@ -15,11 +14,10 @@
     justify-content: space-between;
     position: relative;
 
-    
     a {
         float: left;
         display: block;
-        color:#f2f2f2;
+        color: #f2f2f2;
         text-align: center;
         padding: 13px 16px;
         text-decoration: none;
@@ -43,9 +41,7 @@
 .container {
     padding: 0px 10px;
 }
-@media screen and (max-width: 768px) { 
-    
-   
+@media screen and (max-width: 768px) {
     .topnav a:not(:first-child) {
         display: none;
     }
@@ -58,7 +54,8 @@
         outline: none;
         cursor: pointer;
     }
-    button.icon:focus, button.icon:hover {
+    button.icon:focus,
+    button.icon:hover {
         border: 0;
         outline: none;
         background: #b3b3b3;
@@ -79,6 +76,3 @@
         }
     }
 }
-
-
-

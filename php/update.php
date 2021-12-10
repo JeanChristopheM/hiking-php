@@ -15,17 +15,8 @@
     }
 ?>
 
-<?php include './php/includes/doctype.php'; ?>
-    <title>
-        <?php
-            if ($ID) {
-                echo 'Hike n° '.$ID;
-            } else {
-                echo '404';
-            }
-        ?>
-    </title>
-</head>
+<?php include '../php/includes/doctype.php'; ?>
+
 <body>
     <?php include './includes/nav.php'; ?>
     <header class="header">

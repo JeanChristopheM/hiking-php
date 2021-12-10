@@ -103,7 +103,8 @@ textarea {
     outline: none;
     cursor: pointer;
   }
-  button.icon:focus, button.icon:hover {
+  button.icon:focus,
+  button.icon:hover {
     border: 0;
     outline: none;
     background: #b3b3b3;

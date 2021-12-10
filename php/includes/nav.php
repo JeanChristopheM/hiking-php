@@ -15,6 +15,7 @@
     <?php else: ?>
         <div>
         <a href="/index.php">Home</a>
+        <a href="/php/profile.php">Profile</a>
         <a href="/php/logout.php">Logout</a>
         <a href="/php/create.php" class="add buttonhikes" id="newhikebutton">Add New Hike</a>
         </div>
@@ -30,6 +31,3 @@
     <?php endif; ?>
 
 </nav>
-
-  
- 
