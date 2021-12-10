@@ -248,8 +248,8 @@ textarea {
 @-webkit-keyframes arrive {
   0% {
     opacity: 0;
-    -webkit-transform: translate3d(0, 50px, 0);
-            transform: translate3d(0, 50px, 0);
+    -webkit-transform: translate3d(300px, 0, 0);
+            transform: translate3d(300px, 0, 0);
   }
   100% {
     opacity: 1;
@@ -261,8 +261,8 @@ textarea {
 @keyframes arrive {
   0% {
     opacity: 0;
-    -webkit-transform: translate3d(0, 50px, 0);
-            transform: translate3d(0, 50px, 0);
+    -webkit-transform: translate3d(300px, 0, 0);
+            transform: translate3d(300px, 0, 0);
   }
   100% {
     opacity: 1;
@@ -349,7 +349,7 @@ html {
   -ms-grid-rows: (max-content)[4];
       grid-template-rows: repeat(4, -webkit-max-content);
       grid-template-rows: repeat(4, max-content);
-      grid-template-areas: "name name name" "distance duration modify" "elevation difficulty delete" "created created created";
+      grid-template-areas: "name name name" "distance duration modify" "elevation difficulty delete" "created created created";
   gap: 0.5rem;
   padding: 0.5rem;
   border-radius: 0.5rem;

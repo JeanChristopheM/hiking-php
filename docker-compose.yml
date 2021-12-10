@@ -5,7 +5,7 @@ services:
     # image: "becodeorg/php"
     build: "./"
     volumes:
-      - "./src:/var/www/html"
+      - "./:/var/www/html"
     ports:
       - "80:80"
 volumes:
