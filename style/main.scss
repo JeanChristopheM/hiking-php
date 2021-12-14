@@ -163,6 +163,14 @@ button {
     font-size: 2rem;
     font-weight: bold;
 }
+.subscribeIndex {
+    font-weight: bold;
+    padding-top: 1rem;
+    text-align: center;
+    a {
+        display: inline;
+    }
+}
 @import "updateForm";
 @import "modal";
 @import "message";

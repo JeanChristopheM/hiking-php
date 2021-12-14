@@ -499,6 +499,16 @@ button {
   font-weight: bold;
 }
 
+.subscribeIndex {
+  font-weight: bold;
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.subscribeIndex a {
+  display: inline;
+}
+
 .updateForm {
   border: 1px solid black;
   margin-inline: 1rem;
