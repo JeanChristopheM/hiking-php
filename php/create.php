@@ -7,7 +7,7 @@
     <header class="header">
         <h1 class="title">Create a new hike</h1>
     </header>
-    <form action="dataHikes.php" method="post" class="updateForm">
+    <form action="dataHikes2.php" method="post" class="updateForm">
         <ul>
             <li>
                 <label for="name" class="label"> Name : </p>
@@ -48,6 +48,11 @@
         <br />
         <button type="submit">Submit</button>
     </form>
+    <?php 
+        if(isset($_GET['message']) && !empty($_GET['message'])) {
+            include './includes/message.php';
+        }
+    ?>
     
 </body>
 </html>

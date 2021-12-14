@@ -39,6 +39,10 @@
             $return = 'Account created';
             $color = 'green';
             break;
+        case 'subscriptionFailed':
+            $return = 'Account Failed';
+            $color = 'red';
+            break;
         case 'deleteUserFailed':
             $return = 'There was an issue deleting the account. Please contact the administrator';
             $color = 'red';
@@ -63,6 +67,19 @@
             $return = 'Information modified successfully.';
             $color = 'green';
             break;
+        case 'distanceInvalid';
+            $return = 'This distance is invalid.';
+            $color = 'red';
+            break;
+        case 'formNoValid';
+            $return = 'Form not send to Database.';
+            $color = 'red';
+            break;
+        case 'emailNoValid';
+            $return = 'This Email is not valid.';
+            $color = 'red';
+            break;
+
         default:
             print_r('error');
 

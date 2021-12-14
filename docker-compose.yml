@@ -1,6 +1,13 @@
 ---
 version: "3"
 services:
+  mailhog: # !Important Nom du service 
+    image: mailhog/mailhog
+    logging:
+      driver: 'none'  # Désactiver les logs car il y en a beaucoup
+    ports:
+      - 1025:1025 # Serveur SMTP
+      - 8025:8025 # Interface web
   php:
     # image: "becodeorg/php"
     build: "./"

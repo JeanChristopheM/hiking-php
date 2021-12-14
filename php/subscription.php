@@ -16,7 +16,7 @@ if(!empty($_POST)) {
 
         // check valid email
         if(!filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL)) {
-            die("email invalid");
+            header("location: ../subscription.php?message=emailNoValid");
         }
 
         // hash the password
@@ -31,7 +31,7 @@ if(!empty($_POST)) {
         $dataLogin = $q->fetch();
             if ($dataLogin) // Si une valeur est retournée c'est qu'un utilisateur possède déjà l'Username.
             {
-                header("location: ../index.php?message=userNameUsed");
+                header("location: ./subscription.php?message=userNameUsed");
                 exit;
             }
 
@@ -42,7 +42,7 @@ if(!empty($_POST)) {
         $dataEmail = $q->fetch();
             if ($dataEmail) // Si une valeur est retournée c'est qu'un utilisateur possède déjà l'email.
             {
-                header("location: ../index.php?message=emailUsed");
+                header("location: ./subscription.php?message=emailUsed");
                 exit;
             }
 
@@ -55,7 +55,7 @@ if(!empty($_POST)) {
 
         // check the execute() -> return a boolean
         if (!$q->execute()) {
-            die("form not sent to the db");
+            header("location: ./subscription.php?message=formNoValid");
         }
 
         // retreive the last ID
@@ -71,7 +71,8 @@ if(!empty($_POST)) {
         // redirect to index when done
         header("location: ../index.php?message=subscriptionSuccess");
     } else {
-        die("form incomplete");
+        header("location: ../index.php?message=subscriptionFailed");
+        exit;
     }
 }
 
@@ -101,6 +102,11 @@ if(!empty($_POST)) {
             <button class="btn" type="submit">Register</button>
         </form>
     </div>
+    <?php 
+        if(isset($_GET['message']) && !empty($_GET['message'])) {
+            include './includes/message.php';
+        }
+    ?>
 </body>
 </html>
 
